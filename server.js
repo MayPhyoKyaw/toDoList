@@ -41,3 +41,34 @@ app.get('/SelectItems', async (req, res) => {
         res.send(result);
     });
 });
+
+app.post('/addToDoItem', (req, res) => {
+    console.log(req.body)
+    const url = 'mongodb+srv://ksp:ksp123@cluster0.tqggl.mongodb.net/testinggg?retryWrites=true&w=majority&useNewUrlParser=true&useUnifiedTopology=true';
+    const client = new MongoClient(url);
+    const dbName = "toDoList"
+
+    async function CreateRun() {
+        try {
+            await client.connect();
+            console.log("Connected correctly to server for creating....");
+            const db = client.db(dbName);
+            // Use the collection "people"
+            const doc = db.collection("listItems");
+            // Construct a document
+            let newDocument = {
+                _id: (new ObjectId).toString(),
+                itemName: req.body.item_name,
+                doneStatus: 0,
+            };
+            // Insert a single document, wait for promise so we can read it back
+            const p = await doc.insertOne(newDocument);
+        } catch (err) {
+            console.log(err.stack);
+        }
+        finally {
+            await client.close();
+        }
+    }
+    CreateRun().catch(console.dir);
+});
