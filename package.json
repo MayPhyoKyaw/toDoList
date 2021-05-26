@@ -18,6 +18,7 @@
   "homepage": "https://github.com/MayPhyoKyaw/toDoList#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "jquery": "^3.6.0",
     "mongodb": "^3.6.8"
   }
 }

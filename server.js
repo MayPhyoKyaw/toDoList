@@ -22,3 +22,22 @@ app.get('', (req, res) => {
 
 // Listen on port
 app.listen(port, () => console.info(`Listening on port ${port}`))
+
+// get item lists data from the database
+app.get('/SelectItems', async (req, res) => {
+    const url = 'mongodb+srv://ksp:ksp123@cluster0.tqggl.mongodb.net/testinggg?retryWrites=true&w=majority&useNewUrlParser=true&useUnifiedTopology=true';
+    // const client = new MongoClient(url);
+    const dbName = "toDoList";
+    // connect to your cluster
+    const client = await MongoClient.connect(url, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    });
+    // specify the DB's name
+    const dbRes = client.db(dbName);
+    console.log("Connected correctly to server for selecting....");
+    dbRes.collection('listItems').find().toArray((err, result) => {
+        if (err) return console.log(err);
+        res.send(result);
+    });
+});
