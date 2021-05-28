@@ -47,6 +47,12 @@ body {
     color: #fff;
     text-decoration: line-through;
   }
+
+  /* .checked {
+    background: #888;
+    color: #fff;
+    text-decoration: line-through;
+  } */
   
   /* Add a "checked" mark when clicked on */
   ul li.checked::before {
@@ -137,6 +143,10 @@ body {
   .addBtn:hover {
     background-color: rgb(73, 196, 245);
     color: #07119e;
+  }
+
+  .hideText {
+    display: none;
   }
 
 @media only screen and (max-width: 414px)  {

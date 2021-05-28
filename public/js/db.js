@@ -8,17 +8,37 @@ $(document).ready(function() {
     .then(function (data) {
         console.log(data)
         var toDoItems = [];
-        data.forEach(transaction => {
-            // console.log(transaction);
-            toDoItem = transaction.itemName;
-            console.log(toDoItem, typeof(toDoItem));
+        data.forEach(list => {
+            // console.log(list);
+            toDoItem = list.itemName;
+            id = list._id;
+            status = list.doneStatus;
+            console.log(toDoItem, typeof(toDoItem), id, status, typeof(status));
+            // $("ul").append(`
+            //     <li>${toDoItem}
+            //         <span class="hideText" id="itemId">${id}</span>
+            //         <span class="edit"><i class="fa fa-edit"></i></span>
+            //         <span class="close"><i class="fa fa-close"></i></span>
+            //     </li>
+            // `);
             // var ul = document.getElementById("toDoList");
-            $("ul").append(`
-                <li>${toDoItem}
+            if(status === "1"){
+              $("#toDoList").append(`
+                <li class="checked">${toDoItem}
+                    <span class="hideText" id="itemId">${id}</span>
                     <span class="edit"><i class="fa fa-edit"></i></span>
                     <span class="close"><i class="fa fa-close"></i></span>
                 </li>
-            `)
+              `);
+            }else{
+              $("#toDoList").append(`
+                <li>${toDoItem}
+                    <span class="hideText" id="itemId">${id}</span>
+                    <span class="edit"><i class="fa fa-edit"></i></span>
+                    <span class="close"><i class="fa fa-close"></i></span>
+                </li>
+              `);
+            }
         });
     })
     .catch(function (error) {
@@ -39,6 +59,11 @@ $(document).ready(function() {
         }
         document.getElementById("toDo").value = "";
 
+        var itemID = document.getElementById("itemId").innerHTML;
+        var idSpan = document.createElement("span");
+        idSpan.className = "hideText";
+        var idText = document.createTextNode(itemID);
+        idSpan.appendChild(idText);
         var closeSpan = document.createElement("SPAN");
         // var txt = document.createTextNode("\u00D7");
         closeSpan.className = "close";

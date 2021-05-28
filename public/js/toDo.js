@@ -22,9 +22,33 @@
 // Add a "checked" symbol when clicking on a list item
 var list = document.querySelector('ul');
 list.addEventListener('click', function(ev) {
-  if (ev.target.tagName === 'LI') {
-    ev.target.classList.toggle('checked');
-  }
+  // if (ev.target.tagName === 'LI') {
+  //   ev.target.classList.toggle('checked');
+  //   console.log(ev.target.childNodes[1].textContent);
+  // }
+  var itemId = ev.target.childNodes[1].textContent;
+  fetch('/MakeStatus', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      itemID: itemId,
+    })
+  })
+    .then(function (response) {
+      console.log(response)
+      if (response.ok) {
+        console.log('clicked!!');
+        return;
+      }
+      throw new Error('Failed!!');
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+    location.reload();
 }, false);
 
 // Create a new list item when clicking on the "Add" button

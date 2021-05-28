@@ -72,3 +72,36 @@ app.post('/addToDoItem', (req, res) => {
     }
     CreateRun().catch(console.dir);
 });
+
+// update make status
+app.post('/MakeStatus', (req, res) => {
+    const url = 'mongodb+srv://ksp_ToDoList:ksp12345@cluster0.b0t7c.mongodb.net/myFirstDatabase?retryWrites=true&w=majority&useNewUrlParser=true&useUnifiedTopology=true';
+    const client = new MongoClient(url);
+    const dbName = "toDoList"
+
+    async function EditRun() {
+        try {
+            await client.connect();
+            console.log("Connected correctly to server for editting make status....");
+            const database = client.db(dbName);
+            const collection = database.collection("listItems");
+            console.log(req.body.itemID)
+            // create a filter for a movie to update
+            const filter = {
+                _id: req.body.itemID,
+            };
+            // update a document
+            const updateDoc = {
+                $set: {doneStatus: 1},
+            };
+            // for update many
+            const result = await collection.updateOne(filter, updateDoc);
+            console.log(
+                `${result.matchedCount} document(s) matched the filter, updated ${result.modifiedCount} document(s)`,
+            );
+        } finally {
+            await client.close();
+        }
+    }
+    EditRun().catch(console.dir);
+});
