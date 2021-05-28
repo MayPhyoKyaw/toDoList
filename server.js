@@ -53,7 +53,7 @@ app.post('/addToDoItem', (req, res) => {
             await client.connect();
             console.log("Connected correctly to server for creating....");
             const db = client.db(dbName);
-            // Use the collection "people"
+            // Use the collection "listItems"
             const doc = db.collection("listItems");
             // Construct a document
             let newDocument = {
@@ -74,19 +74,19 @@ app.post('/addToDoItem', (req, res) => {
 });
 
 // update make status
-app.post('/MakeStatus', (req, res) => {
+app.post('/MakeDoneStatus', (req, res) => {
     const url = 'mongodb+srv://ksp_ToDoList:ksp12345@cluster0.b0t7c.mongodb.net/myFirstDatabase?retryWrites=true&w=majority&useNewUrlParser=true&useUnifiedTopology=true';
     const client = new MongoClient(url);
     const dbName = "toDoList"
 
-    async function EditRun() {
+    async function DoneRun() {
         try {
             await client.connect();
             console.log("Connected correctly to server for editting make status....");
             const database = client.db(dbName);
             const collection = database.collection("listItems");
             console.log(req.body.itemID)
-            // create a filter for a movie to update
+            // create a filter to update done status
             const filter = {
                 _id: req.body.itemID,
             };
@@ -103,5 +103,69 @@ app.post('/MakeStatus', (req, res) => {
             await client.close();
         }
     }
-    EditRun().catch(console.dir);
+    DoneRun().catch(console.dir);
+});
+
+app.post('/MakeUndoStatus', (req, res) => {
+    const url = 'mongodb+srv://ksp_ToDoList:ksp12345@cluster0.b0t7c.mongodb.net/myFirstDatabase?retryWrites=true&w=majority&useNewUrlParser=true&useUnifiedTopology=true';
+    const client = new MongoClient(url);
+    const dbName = "toDoList"
+
+    async function UndoRun() {
+        try {
+            await client.connect();
+            console.log("Connected correctly to server for editting make status....");
+            const database = client.db(dbName);
+            const collection = database.collection("listItems");
+            console.log(req.body.item_id)
+            // create a filter to update done status
+            const filter = {
+                _id: req.body.item_id,
+            };
+            // update a document
+            const updateDoc = {
+                $set: {doneStatus: 0},
+            };
+            // for update many
+            const result = await collection.updateOne(filter, updateDoc);
+            console.log(
+                `${result.matchedCount} document(s) matched the filter, updated ${result.modifiedCount} document(s)`,
+            );
+        } finally {
+            await client.close();
+        }
+    }
+    UndoRun().catch(console.dir);
+});
+
+// Delete to do item list
+app.post('/DeleteItem', (req, res) => {
+    console.log(req.body)
+    const url = 'mongodb+srv://ksp_ToDoList:ksp12345@cluster0.b0t7c.mongodb.net/myFirstDatabase?retryWrites=true&w=majority&useNewUrlParser=true&useUnifiedTopology=true';
+    const client = new MongoClient(url);
+    const dbName = "toDoList"
+
+    async function DeleteRun() {
+        try {
+            await client.connect();
+            console.log("Connected correctly to server for deleting....");
+            const database = client.db(dbName);
+            const collection = database.collection("listItems");
+            console.log(req.body.item_id)
+            // create a filter to delete
+            const filter = {
+                _id: req.body.item_id,
+            };
+            // for delete one
+            const result = await collection.deleteOne(filter);
+            if (result.deletedCount === 1) {
+                console.dir("Successfully deleted one document.");
+            } else {
+                console.log("No documents matched the query. Deleted 0 documents.");
+            }
+        } finally {
+            await client.close();
+        }
+    }
+    DeleteRun().catch(console.dir);
 });

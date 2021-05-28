@@ -47,7 +47,7 @@ $(document).ready(function() {
 
     var add = document.getElementById("addListItem");
     add.addEventListener('click', function (e) {
-        var itemName = document.getElementById("toDo").value;
+      var itemName = document.getElementById("toDo").value;
         console.log('button was clicked');
         var li = document.createElement("li");
         var t = document.createTextNode(itemName);
@@ -80,14 +80,50 @@ $(document).ready(function() {
         editSpan.appendChild(editIcon);
         li.appendChild(editSpan);
   
-        fetch("/addToDoItem", {
+        if(itemName !== ""){
+          fetch("/addToDoItem", {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              item_name: itemName,
+            })
+          })
+            .then(function (response) {
+              console.log(response)
+              if (response.ok) {
+                console.log('clicked!!');
+                return;
+              }
+              throw new Error('Failed!!');
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        }
+    });
+
+    // Add a "checked" symbol when clicking on a list item
+    var list = document.querySelector('ul');
+    list.addEventListener('click', function(ev) {
+      // if (ev.target.tagName === 'LI') {
+      //   ev.target.classList.toggle('checked');
+      //   console.log(ev.target.childNodes[1].textContent);
+      // }
+      console.log($(ev.target).hasClass("checked"));
+      var itemId = ev.target.childNodes[1].textContent;
+      
+      if($(ev.target).hasClass("checked")){
+        fetch('/MakeUndoStatus', {
           method: 'POST',
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            item_name: itemName,
+            item_id: itemId,
           })
         })
           .then(function (response) {
@@ -101,5 +137,58 @@ $(document).ready(function() {
           .catch(function (error) {
             console.log(error);
           });
-    });
+      }else{
+        fetch('/MakeDoneStatus', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            itemID: itemId,
+          })
+        })
+          .then(function (response) {
+            console.log(response)
+            if (response.ok) {
+              console.log('clicked!!');
+              return;
+            }
+            throw new Error('Failed!!');
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      }
+      location.reload();
+    }, false);
+
+    // var close = document.getElementById("del");
+    $("#del").click(function(){
+      var itemId = $(this).child().text();
+      console.log(itemId);
+      // fetch('/DeleteItem', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Accept': 'application/json',
+      //     'Content-Type': 'application/json'
+      //   },
+      //   body: JSON.stringify({
+      //     item_id: itemId,
+      //   })
+      // })
+      //   .then(function (response) {
+      //     console.log(response)
+      //     if (response.ok) {
+      //       console.log('clicked!!');
+      //       return;
+      //     }
+      //     throw new Error('Failed!!');
+      //   })
+      //   .catch(function (error) {
+      //     console.log(error);
+      //   });
+
+      //   location.reload();
+    })
 })
