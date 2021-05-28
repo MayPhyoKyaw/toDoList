@@ -1,31 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <!--Get your own code at fontawesome.com-->
 </head>
 
-<body>
+<body class="body">
 
-    <div class="header">
-        <h2 style="margin:15px">To Do List</h2>
-        <input type="text" id="toDo" placeholder="Title...">
-        <span class="addBtn" id="addListItem">Add</span>
+    <div class="wrapper">
+        <header>To Do List</header>
+        <div class="inputField">
+            <input type="text" id="toDo" placeholder="Title...">
+            <button class="addBtn" id="addListItem"><i class="fas fa-plus"></i></button>
+        </div>
+
+        <ul id="toDoList" class="todolist">
+            <!-- data are comes from db -->
+        </ul>
+
+        <div class="footer">
+            <span>You have <span class="pendingTasks"></span> pending tasks</span>
+            <button>Clear All</button>
+        </div>
     </div>
 
-    <ul id="toDoList">
-        <!-- <li class="checked">Meet George
-            <span class="edit"><i class="fa fa-edit"></i></span>
-            <span class="close"><i class="fa fa-close"></i></span>
-        </li>
-        <li>Buy eggs
-            <span class="edit"><i class="fa fa-edit"></i></span>
-            <span class="close"><i class="fa fa-close"></i></span> -->
-        </li>
-    </ul>
+
 
     <!-- Script -->
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
