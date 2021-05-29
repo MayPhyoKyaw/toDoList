@@ -8,12 +8,13 @@ $(document).ready(function() {
     .then(function (data) {
         console.log(data)
         var toDoItems = [];
+        var pendingTask = [];
         data.forEach(list => {
             // console.log(list);
             toDoItem = list.itemName;
             id = list._id;
             status = list.doneStatus;
-            console.log(toDoItem, typeof(toDoItem), id, status, typeof(status));
+            // console.log(toDoItem, typeof(toDoItem), id, status, typeof(status));
             // $("ul").append(`
             //     <li>${toDoItem}
             //         <span class="hideText" id="itemId">${id}</span>
@@ -22,6 +23,10 @@ $(document).ready(function() {
             //     </li>
             // `);
             // var ul = document.getElementById("toDoList");
+            console.log(status);
+            pendingTask.push(status);
+            console.log(pendingTask);
+
             if(status === "1"){
               $("#toDoList").append(`
                 <li class="checked">${toDoItem}
@@ -40,6 +45,18 @@ $(document).ready(function() {
               `);
             }
         });
+        console.log(pendingTask.length);
+        // var i=0;
+        var count = 0;
+        for(i=0; i<pendingTask.length; i++){
+          console.log(pendingTask[i]);
+          if(pendingTask[i] === "0"){
+            // console.log(pendingTask.length);
+            count++;
+          }
+        }
+        console.log(count);
+        $(".pendingTasks").text(count);
     })
     .catch(function (error) {
         console.log(error);
