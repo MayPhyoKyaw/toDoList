@@ -208,4 +208,30 @@ $(document).ready(function() {
 
       //   location.reload();
     })
+
+    $("#delAll").click(function(){
+      fetch('/DeleteAll', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        // body: JSON.stringify({
+          // item_id: itemId,
+        // })
+      })
+        .then(function (response) {
+          console.log(response)
+          if (response.ok) {
+            console.log('clicked!!');
+            return;
+          }
+          throw new Error('Failed!!');
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+
+        location.reload();
+    })
 })

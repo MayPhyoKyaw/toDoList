@@ -170,8 +170,8 @@ app.post('/DeleteItem', (req, res) => {
     DeleteRun().catch(console.dir);
 });
 
-app.post('/DeleteItem', (req, res) => {
-    console.log(req.body)
+app.post('/DeleteAll', (req, res) => {
+    // console.log(req.body)
     const url = 'mongodb+srv://ksp_ToDoList:ksp12345@cluster0.b0t7c.mongodb.net/myFirstDatabase?retryWrites=true&w=majority&useNewUrlParser=true&useUnifiedTopology=true';
     const client = new MongoClient(url);
     const dbName = "toDoList"
@@ -182,7 +182,7 @@ app.post('/DeleteItem', (req, res) => {
             console.log("Connected correctly to server for deleting....");
             const database = client.db(dbName);
             const collection = database.collection("listItems");
-            console.log(req.body.item_id)
+            // console.log(req.body.item_id)
             // create a filter to delete
             // const filter = {
             //     _id: req.body.item_id,
