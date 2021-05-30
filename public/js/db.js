@@ -29,7 +29,7 @@ $(document).ready(function() {
 
             if(status === "1"){
               $("#toDoList").append(`
-                <li class="checked list">
+                <li class="checkedli list">
                     <input type="checkbox" name="toDoList" value="${id} class="checkbox" checked>
                     <label for="${toDoItem}">${toDoItem}</label>
                     <span class="hideText" id="itemId">${id}</span>
@@ -48,6 +48,13 @@ $(document).ready(function() {
                 </li>
               `);
             }
+            $(".todolist").on("click", function(e) {
+              if($(this).is(":checked")) {
+                console.log("Checkbox is checked.");
+              }else if($(this).is(":not(:checked)")){
+                console.log("Checkbox is unchecked.");
+              }
+            });
         });
         console.log(pendingTask.length);
         // var i=0;
@@ -125,15 +132,6 @@ $(document).ready(function() {
   
         // if(itemName !== ""){
         // }
-    });
-
-    $('input[type="checkbox"]').click(function(){
-      if($(this).prop("checked") == true){
-          console.log("Checkbox is checked.");
-      }
-      else if($(this).prop("checked") == false){
-          console.log("Checkbox is unchecked.");
-      }
     });
 
     // Add a "checked" symbol when clicking on a list item
