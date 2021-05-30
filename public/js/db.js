@@ -29,17 +29,21 @@ $(document).ready(function() {
 
             if(status === "1"){
               $("#toDoList").append(`
-                <li class="checked">${toDoItem}
+                <li class="checked list">
+                    <input type="checkbox" id="${id}" class="checkbox" checked>
+                    <label for="${toDoItem}">${toDoItem}</label>
                     <span class="hideText" id="itemId">${id}</span>
-                    <span class="edit"><i class="fa fa-edit"></i></span>
+                    <span class="edit" id="editModal"><i class="fa fa-edit"></i></span>
                     <span class="close"><i class="fa fa-close"></i></span>
                 </li>
               `);
             }else{
               $("#toDoList").append(`
-                <li>${toDoItem}
+                <li class="list">
+                    <input type="checkbox" id="${id}" class="checkbox">
+                    <label for="${toDoItem}">${toDoItem}</label>
                     <span class="hideText" id="itemId">${id}</span>
-                    <span class="edit"><i class="fa fa-edit"></i></span>
+                    <span class="edit" id="editModal"><i class="fa fa-edit"></i></span>
                     <span class="close"><i class="fa fa-close"></i></span>
                 </li>
               `);
@@ -124,62 +128,65 @@ $(document).ready(function() {
     });
 
     // Add a "checked" symbol when clicking on a list item
-    var list = document.querySelector('ul');
-    list.addEventListener('click', function(ev) {
-      // if (ev.target.tagName === 'LI') {
-      //   ev.target.classList.toggle('checked');
-      //   console.log(ev.target.childNodes[1].textContent);
-      // }
-      console.log($(ev.target).hasClass("checked"));
-      var itemId = ev.target.childNodes[1].textContent;
-      
-      if($(ev.target).hasClass("checked")){
-        fetch('/MakeUndoStatus', {
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            item_id: itemId,
+    var list = document.querySelectorAll('.checkbox');
+    list.forEach(input => 
+      input.addEventListener('click', function(ev) {
+        // if (ev.target.tagName === 'LI') {
+        //   ev.target.classList.toggle('checked');
+        //   console.log(ev.target.childNodes[1].textContent);
+        // }
+        console.log("clicked")
+        console.log($(ev.target).hasClass("checked"));
+        var itemId = ev.target.siblings(1).textContent;
+        
+        if($(ev.target).hasClass("checked")){
+          fetch('/MakeUndoStatus', {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              item_id: itemId,
+            })
           })
-        })
-          .then(function (response) {
-            console.log(response)
-            if (response.ok) {
-              console.log('clicked!!');
-              return;
-            }
-            throw new Error('Failed!!');
+            .then(function (response) {
+              console.log(response)
+              if (response.ok) {
+                console.log('clicked!!');
+                return;
+              }
+              throw new Error('Failed!!');
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        }else{
+          fetch('/MakeDoneStatus', {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              itemID: itemId,
+            })
           })
-          .catch(function (error) {
-            console.log(error);
-          });
-      }else{
-        fetch('/MakeDoneStatus', {
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            itemID: itemId,
-          })
-        })
-          .then(function (response) {
-            console.log(response)
-            if (response.ok) {
-              console.log('clicked!!');
-              return;
-            }
-            throw new Error('Failed!!');
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-      }
-      location.reload();
-    }, false);
+            .then(function (response) {
+              console.log(response)
+              if (response.ok) {
+                console.log('clicked!!');
+                return;
+              }
+              throw new Error('Failed!!');
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        }
+        location.reload();
+      }, false)    
+    )
 
     // var close = document.getElementById("del");
     $("#del").click(function(){
