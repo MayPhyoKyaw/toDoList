@@ -127,22 +127,14 @@ $(document).ready(function() {
         // }
     });
 
-    document.addEventListener('DOMContentLoaded', function() {
-      var checkboxes = document.querySelectorAll('input[type=checkbox][name=toDoList]');
-   
-      for (var checkbox of checkboxes)
-      {
-          checkbox.addEventListener('change', function(event)
-          {
-              if (event.target.checked) {
-                  alert(`${event.target.value} is checked`);
-              }
-              else {
-                  alert(`${event.target.value} is unchecked`);
-              }
-          });
+    $('input[type="checkbox"]').click(function(){
+      if($(this).prop("checked") == true){
+          console.log("Checkbox is checked.");
       }
-    }, false);
+      else if($(this).prop("checked") == false){
+          console.log("Checkbox is unchecked.");
+      }
+    });
 
     // Add a "checked" symbol when clicking on a list item
     var list = document.querySelectorAll('.checkbox');
