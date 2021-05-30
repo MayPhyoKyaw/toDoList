@@ -30,7 +30,7 @@ $(document).ready(function() {
             if(status === "1"){
               $("#toDoList").append(`
                 <li class="checked list">
-                    <input type="checkbox" id="${id}" class="checkbox" checked>
+                    <input type="checkbox" name="toDoList" value="${id} class="checkbox" checked>
                     <label for="${toDoItem}">${toDoItem}</label>
                     <span class="hideText" id="itemId">${id}</span>
                     <span class="edit" id="editModal"><i class="fa fa-edit"></i></span>
@@ -40,7 +40,7 @@ $(document).ready(function() {
             }else{
               $("#toDoList").append(`
                 <li class="list">
-                    <input type="checkbox" id="${id}" class="checkbox">
+                    <input type="checkbox" name="toDoList" value="${id} class="checkbox">
                     <label for="${toDoItem}">${toDoItem}</label>
                     <span class="hideText" id="itemId">${id}</span>
                     <span class="edit" id="editModal"><i class="fa fa-edit"></i></span>
@@ -126,6 +126,23 @@ $(document).ready(function() {
         // if(itemName !== ""){
         // }
     });
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var checkboxes = document.querySelectorAll('input[type=checkbox][name=toDoList]');
+   
+      for (var checkbox of checkboxes)
+      {
+          checkbox.addEventListener('change', function(event)
+          {
+              if (event.target.checked) {
+                  alert(`${event.target.value} is checked`);
+              }
+              else {
+                  alert(`${event.target.value} is unchecked`);
+              }
+          });
+      }
+    }, false);
 
     // Add a "checked" symbol when clicking on a list item
     var list = document.querySelectorAll('.checkbox');
