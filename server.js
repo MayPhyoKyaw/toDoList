@@ -138,6 +138,39 @@ app.post('/MakeUndoStatus', (req, res) => {
     UndoRun().catch(console.dir);
 });
 
+// edit task
+app.post('/editTask', (req, res) => {
+    const url = 'mongodb+srv://ksp_ToDoList:ksp12345@cluster0.b0t7c.mongodb.net/myFirstDatabase?retryWrites=true&w=majority&useNewUrlParser=true&useUnifiedTopology=true';
+    const client = new MongoClient(url);
+    const dbName = "toDoList"
+
+    async function EditRun() {
+        try {
+            await client.connect();
+            console.log("Connected correctly to server for editting make status....");
+            const database = client.db(dbName);
+            const collection = database.collection("listItems");
+            console.log(req.body.itemId)
+            // create a filter to update done status
+            const filter = {
+                _id: req.body.itemId,
+            };
+            // update a document
+            const updateDoc = {
+                $set: {itemName: req.body.item_name},
+            };
+            // for update many
+            const result = await collection.updateOne(filter, updateDoc);
+            console.log(
+                `${result.matchedCount} document(s) matched the filter, updated ${result.modifiedCount} document(s)`,
+            );
+        } finally {
+            await client.close();
+        }
+    }
+    EditRun().catch(console.dir);
+});
+
 // Delete to do item list
 app.post('/DeleteItem', (req, res) => {
     console.log(req.body)

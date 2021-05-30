@@ -14,55 +14,152 @@ $(document).ready(function() {
             toDoItem = list.itemName;
             id = list._id;
             status = list.doneStatus;
-            // console.log(toDoItem, typeof(toDoItem), id, status, typeof(status));
-            // $("ul").append(`
-            //     <li>${toDoItem}
-            //         <span class="hideText" id="itemId">${id}</span>
-            //         <span class="edit"><i class="fa fa-edit"></i></span>
-            //         <span class="close"><i class="fa fa-close"></i></span>
-            //     </li>
-            // `);
-            // var ul = document.getElementById("toDoList");
-            console.log(status);
+            // console.log(status);
             pendingTask.push(status);
             console.log(pendingTask);
 
             if(status === "1"){
               $("#toDoList").append(`
                 <li class="checkedli list">
-                    <input type="checkbox" name="toDoList" value="${id} class="checkbox" checked>
-                    <label for="${toDoItem}">${toDoItem}</label>
+                    <input type="checkbox" name="toDoList" value="${id}" class="checkbox" checked>
+                    <label></label>${toDoItem}
                     <span class="hideText" id="itemId">${id}</span>
-                    <span class="edit" id="editModal"><i class="fa fa-edit"></i></span>
-                    <span class="close"><i class="fa fa-close"></i></span>
+                    <span class="edit passID" data-toggle="modal" data-target="#editModal"><i class="fa fa-edit"></i></span>
+                    <span class="close del"><i class="fa fa-close"></i></span>
                 </li>
               `);
             }else{
               $("#toDoList").append(`
                 <li class="list">
-                    <input type="checkbox" name="toDoList" value="${id} class="checkbox">
-                    <label for="${toDoItem}">${toDoItem}</label>
+                    <input type="checkbox" name="toDoList" value="${id}" class="checkbox">
+                    <label></label>${toDoItem}
                     <span class="hideText" id="itemId">${id}</span>
-                    <span class="edit" id="editModal"><i class="fa fa-edit"></i></span>
-                    <span class="close"><i class="fa fa-close"></i></span>
+                    <span class="edit passID" data-toggle="modal" data-target="#editModal"><i class="fa fa-edit"></i></span>
+                    <span class="close del"><i class="fa fa-close"></i></span>
                 </li>
               `);
             }
-            $(".todolist").on("click", function(e) {
+
+            $("input[type=checkbox]").on("click", function(e) {
+              var item_id = `${(this).value}`;
+              console.log(item_id);
               if($(this).is(":checked")) {
-                console.log("Checkbox is checked.");
+                console.log(`Checkbox is checked. \n ${(this).value}`);
+                fetch('/MakeDoneStatus', {
+                  method: 'POST',
+                  headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify({
+                    itemID: item_id,
+                  })
+                })
+                  .then(function (response) {
+                    console.log(response)
+                    if (response.ok) {
+                      console.log('clicked!!');
+                      return;
+                    }
+                    throw new Error('Failed!!');
+                  })
+                  .catch(function (error) {
+                    console.log(error);
+                  });
               }else if($(this).is(":not(:checked)")){
                 console.log("Checkbox is unchecked.");
+                fetch('/MakeUndoStatus', {
+                  method: 'POST',
+                  headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify({
+                    item_id: item_id,
+                  })
+                })
+                  .then(function (response) {
+                    console.log(response)
+                    if (response.ok) {
+                      console.log('clicked!!');
+                      return;
+                    }
+                    throw new Error('Failed!!');
+                  })
+                  .catch(function (error) {
+                    console.log(error);
+                  });
               }
+              location.reload();
             });
+
+            $(".del").click(function(){
+              var item_id = $(this).siblings().text();
+              console.log(`Hello ${itemId}`);
+              fetch('/DeleteItem', {
+                method: 'POST',
+                headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                  item_id: item_id,
+                })
+              })
+                .then(function (response) {
+                  console.log(response)
+                  if (response.ok) {
+                    console.log('clicked!!');
+                    return;
+                  }
+                  throw new Error('Failed!!');
+                })
+                .catch(function (error) {
+                  console.log(error);
+                });
+
+                location.reload();
+            })
+
+            $(".passID").click(function(){
+              var item_id = $(this).siblings().text();
+              // console.log(`Hello ${item_id}`);
+              document.getElementById("carry_id").textContent = item_id;
+            })
+
+            $(".editListItem").click(function(){
+              var itemId = $(this).siblings(".hiddenID").text();
+              var editedItemName = document.getElementById("editToDo").value;
+              console.log(`Hello ${itemId}`);
+              fetch('/editTask', {
+                method: 'POST',
+                headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                  itemId: itemId,
+                  item_name: editedItemName,
+                })
+              })
+                .then(function (response) {
+                  console.log(response)
+                  if (response.ok) {
+                    console.log('clicked!!');
+                    return;
+                  }
+                  throw new Error('Failed!!');
+                })
+                .catch(function (error) {
+                  console.log(error);
+                });
+                location.reload();
+            })
         });
-        console.log(pendingTask.length);
-        // var i=0;
+        // console.log(pendingTask.length);
         var count = 0;
         for(i=0; i<pendingTask.length; i++){
-          console.log(pendingTask[i]);
           if(pendingTask[i] === "0"){
-            // console.log(pendingTask.length);
             count++;
           }
         }
@@ -107,122 +204,7 @@ $(document).ready(function() {
               });
               location.reload();
         }
-        // document.getElementById("toDo").value = "";
-
-        // var itemID = document.getElementById("itemId").innerHTML;
-        // var idSpan = document.createElement("span");
-        // idSpan.className = "hideText";
-        // var idText = document.createTextNode(itemID);
-        // idSpan.appendChild(idText);
-        // var closeSpan = document.createElement("SPAN");
-        // // var txt = document.createTextNode("\u00D7");
-        // closeSpan.className = "close";
-        // var closeIcon = document.createElement("I");
-        // closeIcon.className = "fa fa-close";
-        // closeSpan.appendChild(closeIcon);
-        // li.appendChild(closeSpan);
-
-        // var editSpan = document.createElement("SPAN");
-        // // var txt = document.createTextNode("\u00D7");
-        // editSpan.className = "edit";
-        // var editIcon = document.createElement("I");
-        // editIcon.className = "fa fa-edit";
-        // editSpan.appendChild(editIcon);
-        // li.appendChild(editSpan);
-  
-        // if(itemName !== ""){
-        // }
     });
-
-    // Add a "checked" symbol when clicking on a list item
-    var list = document.querySelectorAll('.checkbox');
-    list.forEach(input => 
-      input.addEventListener('click', function(ev) {
-        // if (ev.target.tagName === 'LI') {
-        //   ev.target.classList.toggle('checked');
-        //   console.log(ev.target.childNodes[1].textContent);
-        // }
-        console.log("clicked")
-        console.log($(ev.target).hasClass("checked"));
-        var itemId = ev.target.siblings(1).textContent;
-        
-        if($(ev.target).hasClass("checked")){
-          fetch('/MakeUndoStatus', {
-            method: 'POST',
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              item_id: itemId,
-            })
-          })
-            .then(function (response) {
-              console.log(response)
-              if (response.ok) {
-                console.log('clicked!!');
-                return;
-              }
-              throw new Error('Failed!!');
-            })
-            .catch(function (error) {
-              console.log(error);
-            });
-        }else{
-          fetch('/MakeDoneStatus', {
-            method: 'POST',
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              itemID: itemId,
-            })
-          })
-            .then(function (response) {
-              console.log(response)
-              if (response.ok) {
-                console.log('clicked!!');
-                return;
-              }
-              throw new Error('Failed!!');
-            })
-            .catch(function (error) {
-              console.log(error);
-            });
-        }
-        location.reload();
-      }, false)    
-    )
-
-    // var close = document.getElementById("del");
-    $("#del").click(function(){
-      var itemId = $(this).child().text();
-      console.log(itemId);
-      // fetch('/DeleteItem', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Accept': 'application/json',
-      //     'Content-Type': 'application/json'
-      //   },
-      //   body: JSON.stringify({
-      //     item_id: itemId,
-      //   })
-      // })
-      //   .then(function (response) {
-      //     console.log(response)
-      //     if (response.ok) {
-      //       console.log('clicked!!');
-      //       return;
-      //     }
-      //     throw new Error('Failed!!');
-      //   })
-      //   .catch(function (error) {
-      //     console.log(error);
-      //   });
-
-      //   location.reload();
-    })
 
     $("#delAll").click(function(){
       fetch('/DeleteAll', {

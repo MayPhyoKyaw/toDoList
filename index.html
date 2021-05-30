@@ -20,7 +20,7 @@
     <div class="wrapper">
         <header>To Do List</header>
         <div class="inputField">
-            <input type="text" id="toDo" placeholder="Title...">
+            <input type="text" id="toDo" placeholder="Add your task...">
             <button class="addBtn" id="addListItem"><i class="fas fa-plus"></i></button>
         </div>
 
@@ -67,21 +67,23 @@
         
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title">Change your task Here! </h4>
+                <h4 class="modal-title" style="color: rgb(47, 83, 0);">Change your task Here! </h4>
                 <button type="button" class="modalClose" data-dismiss="modal"><span class="fa fa-close"></span></button>
             </div>
             
             <!-- Modal body -->
             <div class="modal-body">
-                <div class="inputField">
-                    <input type="text" id="toDo" placeholder="Title...">
-                    <button class="addBtn" id="addListItem"><i class="fas fa-check-circle"></i></button>
+                <div class="editInput">
+                    <input type="text" id="editToDo" placeholder="Change your task...">
+                    <!-- <button class="addBtn" id="addListItem"><i class="fas fa-check-circle"></i></button> -->
                 </div>        
             </div>
             
             <!-- Modal footer -->
             <div class="modal-footer">
+                <span class="hideText hiddenID" id="carry_id"></span>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-info editListItem" data-dismiss="modal">Update Now</button>
             </div>
             
         </div>
