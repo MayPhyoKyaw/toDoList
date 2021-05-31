@@ -21,7 +21,7 @@ $(document).ready(function() {
             if(status === "1"){
               $("#toDoList").append(`
                 <li class="checkedli list">
-                    <input type="checkbox" name="toDoList" value="${id}" class="checkbox" checked>
+                    <input type="checkbox" name="toDoList" value="${id}" class="styled-checkbox" checked>
                     <label></label>${toDoItem}
                     <span class="hideText" id="itemId">${id}</span>
                     <span class="edit passID" data-toggle="modal" data-target="#editModal"><i class="fa fa-edit"></i></span>
@@ -31,7 +31,7 @@ $(document).ready(function() {
             }else{
               $("#toDoList").append(`
                 <li class="list">
-                    <input type="checkbox" name="toDoList" value="${id}" class="checkbox">
+                    <input type="checkbox" name="toDoList" value="${id}" class="styled-checkbox">
                     <label></label>${toDoItem}
                     <span class="hideText" id="itemId">${id}</span>
                     <span class="edit passID" data-toggle="modal" data-target="#editModal"><i class="fa fa-edit"></i></span>
