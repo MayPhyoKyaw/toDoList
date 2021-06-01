@@ -22,9 +22,9 @@ $(document).ready(function() {
               $(".completed_tasks").append(`
                 <li class="checkedli list">
                     <input type="checkbox" name="toDoList" value="${id}" class="styled-checkbox" checked>
-                    <label></label>${toDoItem}
+                    <label></label><span class="item_name">${toDoItem} </span>
                     <span class="hideText" id="itemId">${id}</span>
-                    <span class="edit passID" data-toggle="modal" data-target="#editModal"><i class="fa fa-edit"></i></span>
+                    <span class="edit passValue" data-toggle="modal" data-target="#editModal"><i class="fa fa-edit"></i></span>
                     <span class="close del"><i class="fa fa-close"></i></span>
                 </li>
               `);
@@ -32,9 +32,9 @@ $(document).ready(function() {
               $(".pending_tasks").append(`
                 <li class="list">
                     <input type="checkbox" name="toDoList" value="${id}" class="styled-checkbox">
-                    <label></label>${toDoItem}
+                    <label></label><span class="item_name">${toDoItem} </span>
                     <span class="hideText" id="itemId">${id}</span>
-                    <span class="edit passID" data-toggle="modal" data-target="#editModal"><i class="fa fa-edit"></i></span>
+                    <span class="edit passValue" data-toggle="modal" data-target="#editModal"><i class="fa fa-edit"></i></span>
                     <span class="close del"><i class="fa fa-close"></i></span>
                 </li>
               `);
@@ -121,9 +121,12 @@ $(document).ready(function() {
                 location.reload();
             })
 
-            $(".passID").click(function(){
+            $(".passValue").click(function(){
               var item_id = $(this).siblings().text();
               // console.log(`Hello ${item_id}`);
+              var itemName = $(this).siblings(".item_name").text();
+              // console.log(itemName);
+              $("#editToDo").val(itemName);
               document.getElementById("carry_id").textContent = item_id;
             })
 
