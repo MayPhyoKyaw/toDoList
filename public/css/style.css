@@ -231,7 +231,7 @@ ul li.checkedli {
     font-size: 21px;
     font-family: 'Roboto', sans-serif;
     outline: none;
-    background: #000080;
+    background: #003380;
     cursor: pointer !important;
     border: none;
     border-radius: 3px;
@@ -257,7 +257,12 @@ ul li.checkedli {
     border-color: #000080;
 }
 
-.inputField button:hover,
+.inputField button:hover{
+    background: #0053cf;;
+    box-shadow: 0px 15px 20px #c0b4d1;
+    transform: translateY(-2px);
+}
+
 .footer button:hover {
     background: #80001c;
     box-shadow: 0px 15px 20px #c0b4d1;
