@@ -99,20 +99,43 @@
 
     <!-- The Edit Modal -->
     <div class="modal" id="editModal">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
         <div class="modal-content">
         
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title" style="color: rgb(47, 83, 0);">Change your task Here! </h4>
+                <h4 class="modal-title" style="color: rgb(32, 56, 100)">Change your task Here! </h4>
                 <button type="button" class="modalClose" data-dismiss="modal"><span class="fa fa-close"></span></button>
             </div>
             
             <!-- Modal body -->
             <div class="modal-body">
-                <div class="editInput">
-                    <input type="text" id="editToDo" placeholder="Change your task...">
-                    <!-- <button class="addBtn" id="addListItem"><i class="fas fa-check-circle"></i></button> -->
+                <div class="editInput row">
+                    <!-- <label>
+                        Change Your Task...<br>
+                      <input type="text" id="editToDo" placeholder="Change Your Task Here..." value="">
+                    </label> -->
+                    <div class="col">
+                        <label>
+                            Change Your Task...<br>
+                            <textarea rows="5" cols="40" id="editToDo" placeholder="Change Your Task Here..."></textarea>
+                        </label>
+                    </div>
+                    <div class="col">
+                        <label>
+                            Due Date and Time For Your Task<br>
+                          <input type="datetime-local">
+                        </label>
+                        <label>
+                            Select Priority For Your Task<br>
+                            <select>
+                                <option value="" disabled selected>Priority...</option>
+                                <option>This is option 1</option>
+                                <option>This is option 2</option>
+                                <option>This is option 3</option>
+                            </select>
+                        </label>
+                    </div>
                 </div>        
             </div>
             

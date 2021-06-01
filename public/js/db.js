@@ -126,7 +126,8 @@ $(document).ready(function() {
               // console.log(`Hello ${item_id}`);
               var itemName = $(this).siblings(".item_name").text();
               // console.log(itemName);
-              $("#editToDo").val(itemName);
+              // $("#editToDo").val(itemName);
+              document.getElementById("editToDo").textContent = itemName;
               document.getElementById("carry_id").textContent = item_id;
             })
 
