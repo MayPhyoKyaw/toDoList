@@ -8,15 +8,15 @@ $(document).ready(function() {
     .then(function (data) {
         console.log(data)
         var toDoItems = [];
-        var pendingTask = [];
+        // var pendingTask = [];
         data.forEach(list => {
             // console.log(list);
             toDoItem = list.itemName;
             id = list._id;
             status = list.doneStatus;
-            // console.log(status);
-            pendingTask.push(status);
-            console.log(pendingTask);
+            console.log(status);
+            toDoItems.push(status);
+            console.log(toDoItems);
 
             if(status === "1"){
               $(".completed_tasks").append(`
@@ -156,15 +156,19 @@ $(document).ready(function() {
                 location.reload();
             })
         });
-        // console.log(pendingTask.length);
-        var count = 0;
-        for(i=0; i<pendingTask.length; i++){
-          if(pendingTask[i] === "0"){
-            count++;
+        // console.log(toDoItems.length);
+        var pending_count = 0;
+        var completed_count = 0;
+        for(i=0; i<toDoItems.length; i++){
+          if(toDoItems[i] === "0"){
+            pending_count++;
+          }else if(toDoItems[i] === "1"){
+            completed_count++;
           }
         }
-        console.log(count);
-        $(".pendingTasks").text(count);
+        console.log(pending_count);
+        $(".pendingTasks").text(pending_count);
+        $(".completedTasks").text(completed_count);
     })
     .catch(function (error) {
         console.log(error);
