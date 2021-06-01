@@ -258,7 +258,7 @@ ul li.checkedli {
 }
 
 .inputField button:hover{
-    background: #0053cf;;
+    background: #0053cf;
     box-shadow: 0px 15px 20px #c0b4d1;
     transform: translateY(-2px);
 }
