@@ -329,6 +329,7 @@ ul li.checkedli {
     margin-top: 20px;
     align-items: center;
     justify-content: space-between;
+    border-top: dotted 1px gray;
 }
 
 .footer button {
@@ -340,6 +341,7 @@ ul li.checkedli {
     font-size: 16px;
     font-family: 'Roboto', sans-serif;
     margin-left: 5px;
+    margin-top: 10px;
     background: #000080;
     cursor: pointer !important;
     user-select: none;
@@ -348,6 +350,26 @@ ul li.checkedli {
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease 0s;
     outline: none;
+}
+
+hr {
+    border-top: dotted 1px gray;
+}
+
+header{
+    font-family: 'Courier New', monospace;
+}
+
+.pending_tasks h5 {
+    font-family: cursive;
+    font-size: medium;
+    padding-bottom: 15px;
+}
+
+.completed_tasks h5 {
+    font-family: cursive;
+    font-size: medium;
+    padding-bottom: 15px;
 }
 
 

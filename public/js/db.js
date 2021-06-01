@@ -19,7 +19,7 @@ $(document).ready(function() {
             console.log(pendingTask);
 
             if(status === "1"){
-              $("#toDoList").append(`
+              $(".completed_tasks").append(`
                 <li class="checkedli list">
                     <input type="checkbox" name="toDoList" value="${id}" class="styled-checkbox" checked>
                     <label></label>${toDoItem}
@@ -29,7 +29,7 @@ $(document).ready(function() {
                 </li>
               `);
             }else{
-              $("#toDoList").append(`
+              $(".pending_tasks").append(`
                 <li class="list">
                     <input type="checkbox" name="toDoList" value="${id}" class="styled-checkbox">
                     <label></label>${toDoItem}

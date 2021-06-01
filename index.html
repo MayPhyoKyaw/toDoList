@@ -26,10 +26,18 @@
 
         <ul id="toDoList" class="todolist">
             <!-- data are comes from db -->
+            <div class="pending_tasks">
+                <h5><span class="pendingTasks"></span> Pending Tasks</h5>
+            </div>
+            <hr>
+            <div class="completed_tasks">
+                <h5>Completed Tasks</h5>
+            </div>
         </ul>
 
         <div class="footer">
-            <span>You have <span class="pendingTasks"></span> pending tasks</span>
+            <span></span>
+            <!-- <span>You have <span class="pendingTasks"></span> pending tasks</span> -->
             <button data-toggle="modal" data-target="#confirmModal">Clear All</button>
         </div>
     </div>
