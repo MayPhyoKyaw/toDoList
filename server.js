@@ -233,3 +233,34 @@ app.post('/DeleteAll', (req, res) => {
     }
     DeleteAllRun().catch(console.dir);
 });
+
+app.post('/DeleteCompletedTasks', (req, res) => {
+    // console.log(req.body)
+    const url = 'mongodb+srv://ksp_ToDoList:ksp12345@cluster0.b0t7c.mongodb.net/myFirstDatabase?retryWrites=true&w=majority&useNewUrlParser=true&useUnifiedTopology=true';
+    const client = new MongoClient(url);
+    const dbName = "toDoList"
+
+    async function DeleteCtasksRun() {
+        try {
+            await client.connect();
+            console.log("Connected correctly to server for deleting....");
+            const database = client.db(dbName);
+            const collection = database.collection("listItems");
+            // console.log(req.body.item_id)
+            // create a filter to delete
+            const filter = {
+                doneStatus: 1,
+            };
+            // for delete one
+            const result = await collection.deleteMany(filter);
+            if (result.deletedCount === 1) {
+                console.dir("Successfully deleted All documents.");
+            } else {
+                console.log("No documents matched the query. Deleted 0 documents.");
+            }
+        } finally {
+            await client.close();
+        }
+    }
+    DeleteCtasksRun().catch(console.dir);
+});

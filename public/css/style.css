@@ -259,13 +259,28 @@ ul li.checkedli {
 
 .inputField button:hover,
 .footer button:hover {
-    background: #000080;
+    background: #80001c;
+    box-shadow: 0px 15px 20px #c0b4d1;
+    transform: translateY(-2px);
+}
+
+.completed_tasts_header button:hover {
+    background: #80001c;
     box-shadow: 0px 15px 20px #c0b4d1;
     transform: translateY(-2px);
 }
 
 .modal {
-    top: 20%;
+    text-align: center;
+    padding: 0!important;
+}
+  
+.modal:before {
+    content: '';
+    display: inline-block;
+    height: 17%;
+    vertical-align: middle;
+    margin-right: -4px;
 }
 
 .wrapper .todoList {
@@ -305,7 +320,35 @@ ul li.checkedli {
     font-family: 'Roboto', sans-serif;
     margin-left: 5px;
     margin-top: 10px;
-    background: #000080;
+    background: #a80000;
+    cursor: pointer !important;
+    user-select: none;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    outline: none;
+}
+
+.completed_tasts_header{
+    display: flex;
+    width: 100%;
+    /* height: 40px; */
+    align-items: center;
+    justify-content: space-between;
+}
+
+.completed_tasts_header button {
+    padding: 6px 10px;
+    border-radius: 3px;
+    border: none;
+    color: #fff;
+    font-weight: 400;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    margin-left: 5px;
+    margin-top: -15px;
+    background: #b60000;
     cursor: pointer !important;
     user-select: none;
     opacity: 0.6;

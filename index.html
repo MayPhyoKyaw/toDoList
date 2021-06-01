@@ -31,19 +31,22 @@
             </div>
             <hr>
             <div class="completed_tasks">
-                <h5><span class="completedTasks"></span> Completed Tasks</h5>
+                <div class="completed_tasts_header">
+                    <h5><span class="completedTasks"></span> Completed Tasks</h5>
+                    <button data-toggle="modal" data-target="#confirmCompletedModal">Clear</button>
+                </div>
             </div>
         </ul>
 
         <div class="footer">
             <span></span>
             <!-- <span>You have <span class="pendingTasks"></span> pending tasks</span> -->
-            <button data-toggle="modal" data-target="#confirmModal">Clear All</button>
+            <button data-toggle="modal" data-target="#confirmDelAllModal">Clear All Tasks</button>
         </div>
     </div>
 
-    <!-- The Delete Modal -->
-    <div class="modal" id="confirmModal">
+    <!-- The Delete All Modal -->
+    <div class="modal" id="confirmDelAllModal">
         <div class="modal-dialog">
         <div class="modal-content">
         
@@ -55,13 +58,39 @@
             
             <!-- Modal body -->
             <div class="modal-body">
-                Are you sure to delete all items?
+                Are you sure to delete <span style="color: rgb(221, 55, 55);">all of your tasks</span>?
             </div>
             
             <!-- Modal footer -->
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                 <button type="button" id="delAll" class="btn btn-danger" data-dismiss="modal">Confirm</button>
+            </div>
+            
+        </div>
+        </div>
+    </div>
+
+    <!-- The Delete Completed Tasks Modal -->
+    <div class="modal" id="confirmCompletedModal">
+        <div class="modal-dialog">
+        <div class="modal-content">
+        
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Delete Comfirmation</h4>
+                <button type="button" class="modalClose" data-dismiss="modal"><span class="fa fa-close"></span></button>
+            </div>
+            
+            <!-- Modal body -->
+            <div class="modal-body">
+                Are you sure to delete all of <span style="color: brown;">completed tasks</span>?
+            </div>
+            
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" id="delForCompletedTasks" class="btn btn-danger" data-dismiss="modal">Confirm</button>
             </div>
             
         </div>
