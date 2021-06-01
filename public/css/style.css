@@ -57,7 +57,7 @@ ul li:hover {
 
 /* When clicked on, add a background color and strike out text */
 
-ul li.checkedli{
+ul li.checkedli {
     background: #888;
     color: #fff;
     text-decoration: line-through;
@@ -109,7 +109,10 @@ ul li.checkedli{
     color: rgb(75, 52, 4);
 }
 
+
 /*  checkbox style  */
+
+
 /* .list input{
     padding: 0;
     height: initial;
@@ -156,15 +159,22 @@ ul li.checkedli{
 
 .styled-checkbox {
     position: absolute;
+    margin-top: 7px;
+    width: 20px;
+    height: 20px;
     opacity: 0;
     z-index: 1;
+    cursor: pointer;
+    outline: none;
 }
-.styled-checkbox + label {
+
+.styled-checkbox+label {
     position: relative;
     cursor: pointer;
     padding: 0;
 }
-.styled-checkbox + label:before {
+
+.styled-checkbox+label:before {
     content: "";
     margin-right: 10px;
     display: inline-block;
@@ -175,22 +185,27 @@ ul li.checkedli{
     border: 2px solid #0079bf;
     margin-top: 5px;
 }
-.styled-checkbox:focus + label:before {
+
+.styled-checkbox:focus+label:before {
     box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);
 }
-.styled-checkbox:checked + label:before {
+
+.styled-checkbox:checked+label:before {
     background: #004c79;
     border: 2px solid #004c79;
 }
-.styled-checkbox:disabled + label {
+
+.styled-checkbox:disabled+label {
     color: #b8b8b8;
     cursor: auto;
 }
-.styled-checkbox:disabled + label:before {
+
+.styled-checkbox:disabled+label:before {
     box-shadow: none;
     background: #ddd;
 }
-.styled-checkbox:checked + label:after {
+
+.styled-checkbox:checked+label:after {
     content: "";
     position: absolute;
     left: 4px;
@@ -202,6 +217,7 @@ ul li.checkedli{
     transform: rotate(45deg);
     margin-top: 5px
 }
+
 
 /* Style the header */
 
@@ -285,7 +301,7 @@ ul li.checkedli{
     transform: translateY(-2px);
 }
 
-.modal{
+.modal {
     top: 20%;
 }
 
