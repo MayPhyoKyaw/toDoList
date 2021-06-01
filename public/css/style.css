@@ -86,6 +86,18 @@ ul li.checkedli {
     font-weight: 900;
 }
 
+.edit-modalClose {
+    position: absolute;
+    right: 15px;
+    top: 20px;
+    border: none;
+    /* background-image: linear-gradient(to bottom right, rgb(37, 131, 255), rgb(37, 255, 48)); */
+    background-color: rgba(70, 241, 78, 0);
+    color: rgb(255, 254, 254);
+    /* padding: 12px 16px 12px 16px; */
+    font-weight: 900;
+}
+
 .close:hover {
     /* background-color: #f44336; */
     color: rgb(0, 0, 0);
@@ -274,7 +286,7 @@ ul li.checkedli {
     /* margin-bottom: 1em;
     padding: 10px; */
     text-align: left;
-    color: rgb(32, 56, 100);
+    color: rgb(255, 255, 255);
 }
 
 .editInput input, 
@@ -286,6 +298,7 @@ ul li.checkedli {
 	margin-top: 0.5em;
     width: 90%;
     padding: 10px;
+    color: rgb(26, 33, 97);
 }
 
 .editInput input{
@@ -366,8 +379,9 @@ ul li.checkedli {
     margin-right: -4px;
 }
 
-.modal-dialog {
-    max-width: 600px; /* New width for default modal */
+.edit-modal-color {
+    /* background-color: rgba(98, 131, 173, 0.651); */
+    background-image: linear-gradient(to bottom right, rgb(37, 131, 255), rgb(37, 255, 48))
 }
 
 .wrapper .todoList {

@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
     // get items data
     fetch('/SelectItems', { method: 'GET' })
     .then(function (response) {
