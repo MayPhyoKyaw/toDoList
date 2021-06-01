@@ -174,13 +174,11 @@ $(document).ready(function() {
     add.addEventListener('click', function (e) {
       var itemName = document.getElementById("toDo").value;
         console.log('button was clicked');
-        // var li = document.createElement("li");
-        // var t = document.createTextNode(itemName);
-        // li.appendChild(t);
+      // var addTime = new Date();
+      // console.log(addTime);
         if (itemName === '') {
             alert("You must write something!");
         } else {
-            // document.getElementById("toDoList").appendChild(li);
             fetch("/addToDoItem", {
               method: 'POST',
               headers: {
@@ -189,6 +187,7 @@ $(document).ready(function() {
               },
               body: JSON.stringify({
                 item_name: itemName,
+                // add_time: addTime,
               })
             })
               .then(function (response) {

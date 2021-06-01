@@ -36,7 +36,7 @@ app.get('/SelectItems', async (req, res) => {
     // specify the DB's name
     const dbRes = client.db(dbName);
     console.log("Connected correctly to server for selecting....");
-    dbRes.collection('listItems').find().toArray((err, result) => {
+    dbRes.collection('listItems').find().sort({$natural: -1}).toArray((err, result) => {
         if (err) return console.log(err);
         res.send(result);
     });
@@ -59,7 +59,7 @@ app.post('/addToDoItem', (req, res) => {
             let newDocument = {
                 _id: (new ObjectId).toString(),
                 itemName: req.body.item_name,
-                doneStatus: 0,
+                doneStatus: 0,  
             };
             // Insert a single document, wait for promise so we can read it back
             const p = await doc.insertOne(newDocument);
