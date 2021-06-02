@@ -187,6 +187,10 @@ ul li.checkedli {
     margin-top: 5px
 }
 
+.label-color {
+    color:rgb(61, 74, 87);
+    font-family: cursive;
+}
 
 /* Style the header */
 
@@ -198,6 +202,70 @@ ul li.checkedli {
     padding: 25px;
     border-radius: 5px;
     box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+    display: none;
+}
+
+.wrapper1 {
+    background: #fff;
+    max-width: 80%;
+    width: 100%;
+    margin: 70px auto;
+    padding: 25px;
+    border-radius: 5px;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.proj-create {
+    margin-left: 6%;
+    display: block;
+    /* text-align: center; */
+}
+
+.show-created {
+    display: flex;
+    justify-content: left;
+    margin-left: 10% !important;
+}
+
+.proj-block {
+    background-color: rgb(148, 167, 185);
+    display: block;
+    margin: 10px;
+    padding: 20px;
+    height: 200px;
+    box-shadow: 2px 2px rgb(185, 208, 230);
+    overflow-wrap: break-word;
+}
+
+.proj-block h4 {
+    color: rgb(56, 42, 6);
+    font-family: cursive;
+}
+
+.proj-block p {
+    font-size: medium;
+    color: black;
+    font-family: cursive;
+}
+
+.proj-create-button {
+    padding: 8px 80px;
+    border-radius: 3px;
+    border: none;
+    color: #fff;
+    font-weight: 400;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    margin-left: 5px;
+    margin-top: 10px;
+    background: #6d8f1d;
+    cursor: pointer !important;
+    user-select: none;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    outline: none;
 }
 
 .wrapper header {
@@ -254,7 +322,7 @@ ul li.checkedli {
     outline: none;
 }
 
-/* .editInput input {
+/* .input-style input {
     width: 100%;
     height: 50px;
     outline: none;
@@ -265,11 +333,11 @@ ul li.checkedli {
     transition: all 0.3s ease;
 }
 
-.editInput input:focus {
+.input-style input:focus {
     border-color: #000080;
 }
 
-.editInput label {
+.input-style label {
     text-align: left !important;
     margin-top: 10px !important;
     display: inline-block;
@@ -280,7 +348,7 @@ ul li.checkedli {
     background-color: rgba(51, 51, 51, 0.705) !important;
 } */
 
-.editInput {
+.input-style {
     /* display: flex;
 	flex-wrap: wrap; */
     /* margin-bottom: 1em;
@@ -289,9 +357,9 @@ ul li.checkedli {
     color: rgb(255, 255, 255);
 }
 
-.editInput input, 
-.editInput select,
-.editInput textarea {
+.input-style input, 
+.input-style select,
+.input-style textarea {
 	color: inherit;
 	font: inherit;
 	margin: 0;
@@ -301,25 +369,25 @@ ul li.checkedli {
     color: rgb(26, 33, 97);
 }
 
-.editInput input{
+.input-style input{
     line-height: 1.5em;
 }
 
-.editInput select {
+.input-style select {
 	border: 1px solid #ccc;
 	background-color: #fff;
 }
 
-.editInput label {
+.input-style label {
 	display: block;
 	margin: 0.75em 0;
 	font-weight: bold;
 }
 
-.editInput input[type=text],
-.editInput input[type=datetime-local],
-.editInput select,
-.editInput textarea {
+.input-style input[type=text],
+.input-style input[type=datetime-local],
+.input-style select,
+.input-style textarea {
     border: 1px solid #ccc;
 	box-shadow: inset 0 1px 3px #ddd;
 	border-radius: 2px;
@@ -330,14 +398,14 @@ ul li.checkedli {
 	margin-bottom: 0.5em;
 }
 
-.editInput input:focus:invalid,
-.editInput select:focus:invalid,
-.editInput textarea:focus:invalid {
+.input-style input:focus:invalid,
+.input-style select:focus:invalid,
+.input-style textarea:focus:invalid {
 	color: #b94a48;
 	border-color: #e9322d;
 }
 
-.editInput input:not([type]) {
+.input-style input:not([type]) {
 	display: inline-block;
 	border: 1px solid #ccc;
 	box-shadow: inset 0 1px 3px #ddd;
@@ -346,7 +414,7 @@ ul li.checkedli {
 	padding: 0.5em 0.6em;
 }
 
-.editInput textarea { line-height: 1.25em; }
+.input-style textarea { line-height: 1.25em; }
 
 .inputField button:hover{
     background: #0053cf;

@@ -1,5 +1,19 @@
 $(document).ready(function() {
 
+    $(".proj-create-button").click(function() {
+      var proj_title = document.getElementById("projTitle").value;
+      var proj_desc = document.getElementById("description").value;
+      // $(".proj-title").text(proj_title);
+      // $(".proj-descp").text(proj_desc);
+      console.log(proj_desc);
+      $(".show-created").append(`
+        <div class="proj-block col-3">
+          <h4 class="proj-title">${proj_title}</h4>
+          <p class="proj-descp">${proj_desc}</p>
+        </div>
+      `)
+    })
+
     // get items data
     fetch('/SelectItems', { method: 'GET' })
     .then(function (response) {
