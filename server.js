@@ -20,8 +20,30 @@ app.get('', (req, res) => {
     res.sendFile(__dirname + '/index.html')
 })
 
+app.get('/details.html', (req, res) => {
+    res.sendFile(__dirname + '/details.html')
+})
+
 // Listen on port
 app.listen(port, () => console.info(`Listening on port ${port}`))
+
+app.get('/SelectProject', async (req, res) => {
+    const url = 'mongodb+srv://ksp_ToDoList:ksp12345@cluster0.b0t7c.mongodb.net/myFirstDatabase?retryWrites=true&w=majority&useNewUrlParser=true&useUnifiedTopology=true';
+    // const client = new MongoClient(url);
+    const dbName = "toDoList";
+    // connect to your cluster
+    const client = await MongoClient.connect(url, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    });
+    // specify the DB's name
+    const dbRes = client.db(dbName);
+    console.log("Connected correctly to server for selecting....");
+    dbRes.collection('project').find().sort({$natural: -1}).toArray((err, result) => {
+        if (err) return console.log(err);
+        res.send(result);
+    });
+});
 
 // get item lists data from the database
 app.get('/SelectItems', async (req, res) => {
@@ -40,6 +62,37 @@ app.get('/SelectItems', async (req, res) => {
         if (err) return console.log(err);
         res.send(result);
     });
+});
+
+app.post('/createProject', (req, res) => {
+    console.log(req.body)
+    const url = 'mongodb+srv://ksp_ToDoList:ksp12345@cluster0.b0t7c.mongodb.net/myFirstDatabase?retryWrites=true&w=majority&useNewUrlParser=true&useUnifiedTopology=true';
+    const client = new MongoClient(url);
+    const dbName = "toDoList"
+
+    async function CreateProjRun() {
+        try {
+            await client.connect();
+            console.log("Connected correctly to server for creating....");
+            const db = client.db(dbName);
+            // Use the collection "listItems"
+            const doc = db.collection("project");
+            // Construct a document
+            let newDocument = {
+                _id: (new ObjectId).toString(),
+                projTitle: req.body.projTitle,
+                description: req.body.projDesc,
+            };
+            // Insert a single document, wait for promise so we can read it back
+            const p = await doc.insertOne(newDocument);
+        } catch (err) {
+            console.log(err.stack);
+        }
+        finally {
+            await client.close();
+        }
+    }
+    CreateProjRun().catch(console.dir);
 });
 
 app.post('/addToDoItem', (req, res) => {

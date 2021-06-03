@@ -17,7 +17,7 @@
 
 <body class="body">
 
-    <div class="col-md-5 p-lg-5 mx-auto">
+    <div class="col-md-5 p-lg-5 mx-auto" id="homeIntro">
         <h2 class="main-page-title text-style">ToDo</h2>
         <h4 class="main-page-note text-style">Welcome from free todo list created by KSP and MPK...<br/>IF u want to create new, click below follwing create project button to start to create ur imaging...!!!</h4>
         <a class="text-style" href="#" data-toggle="modal" data-target="#createProject"><i class="fas fa-plus"></i>Create Project</a>
@@ -26,37 +26,8 @@
         </div>
     </div>
 
-    <div class="wrapper-created-proj">
+    <div class="wrapper-created-proj" id="projBlock">
         <!-- input data after created -->
-    </div>
-
-    <div class="wrapper">
-        <header>To Do List</header>
-        <div class="inputField">
-            <input type="text" id="toDo" placeholder="Add your task...">
-            <button class="addBtn" id="addListItem"><i class="fas fa-plus"></i></button>
-        </div>
-
-        <ul id="toDoList" class="todolist">
-            <!-- data are comes from db -->
-            <div class="pending_tasks">
-                <h5><span class="pendingTasks"></span> Pending Tasks</h5>
-            </div>
-            <hr>
-            <div class="completed_tasks">
-                <div class="completed_tasts_header">
-                    <h5><span class="completedTasks"></span> Completed Tasks</h5>
-                    <button data-toggle="modal" data-target="#confirmCompletedModal">Clear</button>
-                </div>
-            </div>
-        </ul>
-
-        <div class="footer">
-            <span></span>
-            <!-- <span>You have <span class="pendingTasks"></span> pending tasks</span> -->
-            <button data-toggle="modal" data-target="#confirmDelAllModal">Clear
-                    All Tasks</button>
-        </div>
     </div>
 
     <!-- The create project Modal -->
@@ -83,125 +54,19 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary text-style" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary text-style proj-create-button">Create</button>
+                    <button type="button" id="createProject" class="btn btn-primary text-style proj-create-button">Create</button>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- The Delete All Modal -->
-    <div class="modal" id="confirmDelAllModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Delete Comfirmation</h4>
-                    <button type="button" class="modalClose" data-dismiss="modal"><span class="fa fa-close"></span></button>
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body">
-                    Are you sure to delete <span style="color: rgb(221, 55,
-                            55);">all of your tasks</span>?
-                </div>
-
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="button" id="delAll" class="btn btn-danger" data-dismiss="modal">Confirm</button>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-    <!-- The Delete Completed Tasks Modal -->
-    <div class="modal" id="confirmCompletedModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Delete Comfirmation</h4>
-                    <button type="button" class="modalClose" data-dismiss="modal"><span class="fa fa-close"></span></button>
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body">
-                    Are you sure to delete all of <span style="color:
-                            brown;">completed tasks</span>?
-                </div>
-
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="button" id="delForCompletedTasks" class="btn btn-danger" data-dismiss="modal">Confirm</button>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-    <!-- The Edit Modal -->
-    <div class="modal" id="editModal">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-
-                <!-- Modal Header -->
-                <div class="modal-header edit-modal-color">
-                    <h4 class="modal-title" style="color: rgb(254, 254,
-                            255)">Change your task Here! </h4>
-                    <button type="button" class="edit-modalClose" data-dismiss="modal"><span class="fa fa-close"></span></button>
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body edit-modal-color">
-                    <div class="input-style row">
-                        <!-- <label>
-                        Change Your Task...<br>
-                      <input type="text" id="editToDo" placeholder="Change Your Task Here..." value="">
-                    </label> -->
-                        <div class="col">
-                            <label>
-                                    Change Your Task...<br>
-                                    <textarea rows="5" cols="40" id="editToDo"
-                                        placeholder="Change Your Task Here..."></textarea>
-                                </label>
-                        </div>
-                        <div class="col">
-                            <label>
-                                    Due Date and Time For Your Task<br>
-                                    <input type="datetime-local">
-                                </label>
-                            <label>
-                                    Select Priority For Your Task<br>
-                                    <select>
-                                        <option value="" disabled selected>Priority...</option>
-                                        <option>This is option 1</option>
-                                        <option>This is option 2</option>
-                                        <option>This is option 3</option>
-                                    </select>
-                                </label>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Modal footer -->
-                <div class="modal-footer edit-modal-color">
-                    <span class="hideText hiddenID" id="carry_id"></span>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-info editListItem" data-dismiss="modal">Update Now</button>
-                </div>
-
             </div>
         </div>
     </div>
 
     <!-- Script -->
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="js/toDo.js"></script>
-    <script src="js/db.js"></script>
+    <!-- <script src="js/toDoDetails.js"></script> -->
+    <script src="js/index.js"></script>
+    <!-- <script type="text/javascript">
+        
+    </script> -->
 </body>
 
 </html>
