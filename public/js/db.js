@@ -6,11 +6,17 @@ $(document).ready(function() {
       // $(".proj-title").text(proj_title);
       // $(".proj-descp").text(proj_desc);
       console.log(proj_desc);
-      $(".show-created").append(`
-        <div class="proj-block col-3">
-          <h4 class="proj-title">${proj_title}</h4>
-          <p class="proj-descp">${proj_desc}</p>
-        </div>
+      $(".wrapper-created-proj").append(`
+      <div class="wrapper-created-proj-list">
+          <div class="card">
+            <div class="card-body">
+              <p class="card-text">${proj_desc}</p>
+              <hr>
+              <h4 class="card-title">${proj_title}</h4>
+            </div>
+            <div class="proj-detail"><a href="#">View >></a></div>
+          </div>
+      </div>
       `)
     })
 

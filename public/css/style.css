@@ -6,6 +6,15 @@ body {
     min-height: 100vh;
 }
 
+.card {
+    border: none !important;
+}
+
+.card-body {
+    text-align: center;
+    padding-bottom: 0rem !important;
+}
+
 
 /* Include the padding and border in an element's total width and height */
 
@@ -188,9 +197,10 @@ ul li.checkedli {
 }
 
 .label-color {
-    color:rgb(61, 74, 87);
+    color: rgb(61, 74, 87);
     font-family: cursive;
 }
+
 
 /* Style the header */
 
@@ -205,47 +215,27 @@ ul li.checkedli {
     display: none;
 }
 
-.wrapper1 {
+.wrapper-create-proj,
+.wrapper-created-proj-list {
+    float: left;
     background: #fff;
-    max-width: 80%;
+    max-width: 19%;
     width: 100%;
+    height: 230px;
     margin: 70px auto;
-    padding: 25px;
+    margin-left: 50px;
+    padding: 10px;
     border-radius: 5px;
     box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.proj-detail {
+    text-align: right;
 }
 
 .proj-create {
     margin-left: 6%;
     display: block;
-    /* text-align: center; */
-}
-
-.show-created {
-    display: flex;
-    justify-content: left;
-    margin-left: 10% !important;
-}
-
-.proj-block {
-    background-color: rgb(148, 167, 185);
-    display: block;
-    margin: 10px;
-    padding: 20px;
-    height: 200px;
-    box-shadow: 2px 2px rgb(185, 208, 230);
-    overflow-wrap: break-word;
-}
-
-.proj-block h4 {
-    color: rgb(56, 42, 6);
-    font-family: cursive;
-}
-
-.proj-block p {
-    font-size: medium;
-    color: black;
-    font-family: cursive;
 }
 
 .proj-create-button {
@@ -322,6 +312,7 @@ ul li.checkedli {
     outline: none;
 }
 
+
 /* .input-style input {
     width: 100%;
     height: 50px;
@@ -344,44 +335,41 @@ ul li.checkedli {
     position: relative;
 } */
 
+
 /* .modal {
     background-color: rgba(51, 51, 51, 0.705) !important;
 } */
 
 .input-style {
-    /* display: flex;
-	flex-wrap: wrap; */
-    /* margin-bottom: 1em;
-    padding: 10px; */
     text-align: left;
     color: rgb(255, 255, 255);
 }
 
-.input-style input, 
+.input-style input,
 .input-style select,
 .input-style textarea {
-	color: inherit;
-	font: inherit;
-	margin: 0;
-	margin-top: 0.5em;
+    color: inherit;
+    font: inherit;
+    margin: 0;
+    margin-top: 0.5em;
     width: 90%;
     padding: 10px;
     color: rgb(26, 33, 97);
 }
 
-.input-style input{
+.input-style input {
     line-height: 1.5em;
 }
 
 .input-style select {
-	border: 1px solid #ccc;
-	background-color: #fff;
+    border: 1px solid #ccc;
+    background-color: #fff;
 }
 
 .input-style label {
-	display: block;
-	margin: 0.75em 0;
-	font-weight: bold;
+    display: block;
+    margin: 0.75em 0;
+    font-weight: bold;
 }
 
 .input-style input[type=text],
@@ -389,34 +377,36 @@ ul li.checkedli {
 .input-style select,
 .input-style textarea {
     border: 1px solid #ccc;
-	box-shadow: inset 0 1px 3px #ddd;
-	border-radius: 2px;
-	vertical-align: middle;
-	box-sizing: border-box;
-	max-width: 100%;
-	padding: 0.5em 0.6em;
-	margin-bottom: 0.5em;
+    box-shadow: inset 0 1px 3px #ddd;
+    border-radius: 2px;
+    vertical-align: middle;
+    box-sizing: border-box;
+    max-width: 100%;
+    padding: 0.5em 0.6em;
+    margin-bottom: 0.5em;
 }
 
 .input-style input:focus:invalid,
 .input-style select:focus:invalid,
 .input-style textarea:focus:invalid {
-	color: #b94a48;
-	border-color: #e9322d;
+    color: #b94a48;
+    border-color: #e9322d;
 }
 
 .input-style input:not([type]) {
-	display: inline-block;
-	border: 1px solid #ccc;
-	box-shadow: inset 0 1px 3px #ddd;
-	border-radius: 2px;
-	box-sizing: border-box;
-	padding: 0.5em 0.6em;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 1px 3px #ddd;
+    border-radius: 2px;
+    box-sizing: border-box;
+    padding: 0.5em 0.6em;
 }
 
-.input-style textarea { line-height: 1.25em; }
+.input-style textarea {
+    line-height: 1.25em;
+}
 
-.inputField button:hover{
+.inputField button:hover {
     background: #0053cf;
     box-shadow: 0px 15px 20px #c0b4d1;
     transform: translateY(-2px);
@@ -438,7 +428,7 @@ ul li.checkedli {
     /* text-align: center; */
     padding: 0!important;
 }
-  
+
 .modal:before {
     content: '';
     display: inline-block;
@@ -499,7 +489,7 @@ ul li.checkedli {
     outline: none;
 }
 
-.completed_tasts_header{
+.completed_tasts_header {
     display: flex;
     width: 100%;
     /* height: 40px; */
@@ -543,7 +533,10 @@ hr {
     padding-bottom: 15px;
 }
 
+
 /* input date style */
+
+
 /* .datepicker-toggle {
     display: inline-block;
     position: relative;
@@ -558,6 +551,7 @@ hr {
     height: 100%;
     background-image: url('data:image/svg+xml;base64,...');
 } */
+
 
 /* Clear floats after the header */
 
