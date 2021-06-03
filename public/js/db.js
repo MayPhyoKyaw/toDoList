@@ -10,12 +10,12 @@ $(document).ready(function() {
       <div class="wrapper-created-proj-list">
           <div class="card">
             <div class="card-body">
-              <p class="card-text">${proj_desc}</p>
-              <hr>
               <h4 class="card-title">${proj_title}</h4>
+              <hr>
+              <p class="card-text">${proj_desc}</p>
             </div>
-            <div class="proj-detail"><a href="#">View >></a></div>
           </div>
+          <div class="proj-detail"><a href="#">View >></a></div>
       </div>
       `)
     })
