@@ -254,6 +254,12 @@ ul li.checkedli {
     /* display: none; */
 }
 
+.wrapper-created-proj {
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 300px;
+}
+
 .wrapper-created-proj-list {
     background-image: url("../images/ToDo_Template_Main.png");
     float: left;
@@ -492,6 +498,10 @@ ul li.checkedli {
     background-image: url("../images/ToDo_Template.png");
 }
 
+.create-modal-color {
+    background-image: url("../images/ToDo_List.png");
+}
+
 .wrapper .todoList {
     max-height: 250px;
     overflow-y: auto;
@@ -635,5 +645,17 @@ hr {
   .wrapper-created-proj-list {
       max-width: 20%;
   }  
+  .wrapper {
+      max-width: 65%;
+  }
     
+}
+
+@media (min-width: 1370px) and (max-width: 1605px) {
+    .wrapper-created-proj-list {
+        max-width: 21.8%;
+    }  
+    .wrapper-created-proj {
+        height: 400px;
+    }
 }
