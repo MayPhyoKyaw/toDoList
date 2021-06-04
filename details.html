@@ -18,7 +18,8 @@
 <body class="body">
 
     <div class="wrapper" id="detailBlock">
-        <header>To Do List for <span id="projTitle"></span></header>
+        <header>
+            <a href="index.html"><img class="logo" src="images/ToDo_Logo.png"></a> To Do List for <span id="projTitle"></span></header>
         <div class="inputField">
             <input type="text" id="toDo" placeholder="Add your task...">
             <button class="addBtn" id="addListItem"><i class="fas fa-plus"></i></button>
@@ -107,8 +108,7 @@
 
                 <!-- Modal Header -->
                 <div class="modal-header edit-modal-color">
-                    <h4 class="modal-title" style="color: rgb(254, 254,
-                            255)">Change your task Here! </h4>
+                    <h4 class="modal-title edit-modal-title">Change your task Here! </h4>
                     <button type="button" class="edit-modalClose" data-dismiss="modal"><span class="fa fa-close"></span></button>
                 </div>
 
@@ -119,14 +119,14 @@
                         Change Your Task...<br>
                       <input type="text" id="editToDo" placeholder="Change Your Task Here..." value="">
                     </label> -->
-                        <div class="col">
+                        <div class="col edit-modal-left">
                             <label>
                                     Change Your Task...<br>
                                     <textarea rows="5" cols="40" id="editToDo"
                                         placeholder="Change Your Task Here..."></textarea>
                                 </label>
                         </div>
-                        <div class="col">
+                        <div class="col edit-modal-right">
                             <label>
                                     Due Date and Time For Your Task<br>
                                     <input type="datetime-local">
