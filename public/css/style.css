@@ -597,3 +597,11 @@ hr {
         font-size: 15px;
     }
 }
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  
+  .wrapper-created-proj-list {
+      max-width: 20%;
+  }  
+    
+}
