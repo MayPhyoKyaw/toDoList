@@ -117,8 +117,8 @@ $(document).ready(function() {
                 });
   
                 $(".del").click(function(){
-                  var item_id = $(this).siblings().text();
-                  console.log(`Hello ${itemId}`);
+                  var item_id = $(this).siblings("#itemId").text();
+                  console.log(`Hello ${item_id}`);
                   fetch('/DeleteItem', {
                     method: 'POST',
                     headers: {
@@ -141,14 +141,14 @@ $(document).ready(function() {
                       console.log(error);
                     });
   
-                    location.reload();
+                    // location.reload();
                 })
   
                 $(".passValue").click(function(){
-                  var item_id = $(this).siblings().text();
-                  // console.log(`Hello ${item_id}`);
+                  var item_id = $(this).siblings("#itemId").text();
+                  console.log(`Hello ${item_id}`);
                   var itemName = $(this).siblings(".item_name").text();
-                  // console.log(itemName);
+                  console.log(itemName);
                   // $("#editToDo").val(itemName);
                   document.getElementById("editToDo").textContent = itemName;
                   document.getElementById("carry_id").textContent = item_id;
@@ -180,7 +180,7 @@ $(document).ready(function() {
                     .catch(function (error) {
                       console.log(error);
                     });
-                    location.reload();
+                    // location.reload();
                 })
             });
             // console.log(toDoItems.length);
@@ -220,6 +220,7 @@ $(document).ready(function() {
               body: JSON.stringify({
                 item_name: itemName,
                 // add_time: addTime,
+                proj_id: project_id,
               })
             })
               .then(function (response) {
@@ -233,6 +234,7 @@ $(document).ready(function() {
               .catch(function (error) {
                 console.log(error);
               });
+              // location.reload();
               location.reload();
         }
     });

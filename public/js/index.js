@@ -78,6 +78,17 @@ $(document).ready(function() {
     });
 })
 
+$(window).scroll(function () {
+  var height = $('body').height();
+  var scrollTop = $(window).scrollTop();
+  if(scrollTop>10){
+       $('.wrapper-sticky').css({ "position" : "fixed", "top" : "0px" });
+  }
+  else {
+       $('.wrapper-sticky').css({ "position" : "relative", "top" : "0px"});
+ }
+});
+
 function trim(x) {
   return x.replace(/^\s+|\s+$/gm, '');
 }

@@ -113,6 +113,7 @@ app.post('/addToDoItem', (req, res) => {
             let newDocument = {
                 _id: (new ObjectId).toString(),
                 itemName: req.body.item_name,
+                pid: req.body.proj_id,
                 doneStatus: 0,  
             };
             // Insert a single document, wait for promise so we can read it back
