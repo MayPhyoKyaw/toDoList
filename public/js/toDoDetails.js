@@ -113,7 +113,7 @@ $(document).ready(function() {
                         console.log(error);
                       });
                   }
-                  location.reload();
+                  // location.reload();
                 });
   
                 $(".del").click(function(){
@@ -234,8 +234,8 @@ $(document).ready(function() {
               .catch(function (error) {
                 console.log(error);
               });
+              location.href = `details.html?projTitle=${project_title}&projID=${project_id}`;
               // location.reload();
-              location.reload();
         }
     });
 
@@ -262,7 +262,7 @@ $(document).ready(function() {
           console.log(error);
         });
 
-        location.reload();
+        // location.reload();
     });
 
     $("#delForCompletedTasks").click(function(){
@@ -288,6 +288,6 @@ $(document).ready(function() {
           console.log(error);
         });
 
-        location.reload();
+        // location.reload();
     });
 })
