@@ -113,6 +113,7 @@ $(document).ready(function() {
                         console.log(error);
                       });
                   }
+                  location.href = `details.html?projTitle=${project_title}&projID=${project_id}`;
                   // location.reload();
                 });
   
@@ -140,7 +141,7 @@ $(document).ready(function() {
                     .catch(function (error) {
                       console.log(error);
                     });
-  
+                    location.href = `details.html?projTitle=${project_title}&projID=${project_id}`;
                     // location.reload();
                 })
   
@@ -180,6 +181,7 @@ $(document).ready(function() {
                     .catch(function (error) {
                       console.log(error);
                     });
+                    location.href = `details.html?projTitle=${project_title}&projID=${project_id}`;
                     // location.reload();
                 })
             });
@@ -196,6 +198,7 @@ $(document).ready(function() {
             console.log(pending_count);
             $(".pendingTasks").text(pending_count);
             $(".completedTasks").text(completed_count);
+            location.href = `details.html?projTitle=${project_title}&projID=${project_id}`;
             // location.reload();
         })
         .catch(function (error) {
@@ -261,7 +264,7 @@ $(document).ready(function() {
         .catch(function (error) {
           console.log(error);
         });
-
+        location.href = `details.html?projTitle=${project_title}&projID=${project_id}`;
         // location.reload();
     });
 
@@ -287,7 +290,7 @@ $(document).ready(function() {
         .catch(function (error) {
           console.log(error);
         });
-
+        location.href = `details.html?projTitle=${project_title}&projID=${project_id}`;
         // location.reload();
     });
 })
