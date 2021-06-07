@@ -54,13 +54,15 @@ $(document).ready(function() {
             <div class="wrapper-created-proj-list">
                 <div class="card">
                   <div class="card-body">
+                    <div class="edit-proj"><i class="fa fa-edit"></i></div>
+                    <span class="close del del-proj"><i class="fa fa-close"></i></span>
                     <h4 class="card-title">${proj_title}</h4>
                     <hr>
                     <p class="card-text">${proj_desc}</p>
                   </div>
                 </div>
                 <span class="hideText proj-id">${pid}</span>
-                <div class="proj-detail"><a href="#">View >></a></div>
+                <div class="proj-detail">View >></div>
             </div>
           `);
         })     

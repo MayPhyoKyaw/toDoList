@@ -20,6 +20,7 @@ body {
 .card-body {
     text-align: left;
     padding-bottom: 0rem !important;
+    padding: 0.8rem !important;
 }
 
 
@@ -89,7 +90,8 @@ ul li.checkedli {
 
 /* Style the close button */
 
-.close {
+.close,
+.del-proj {
     position: absolute;
     right: 0;
     top: 0;
@@ -121,13 +123,26 @@ ul li.checkedli {
     font-weight: 900;
 }
 
-.close:hover {
+.close:hover,
+.del-proj:hover {
     /* background-color: #f44336; */
     color: rgb(0, 0, 0);
     /* border-radius: 5px; */
 }
 
-.edit {
+.edit-proj,
+.del-proj {
+    display: none !important;
+    /* color: #000080 !important; */
+}
+
+.wrapper-created-proj-list:hover .edit-proj,
+.wrapper-created-proj-list:hover .del-proj {
+    display: block !important;
+}
+
+.edit,
+.edit-proj {
     /* float: right; */
     right: 10px;
     top: 0;
@@ -140,10 +155,11 @@ ul li.checkedli {
     cursor: pointer;
 }
 
-.edit:hover {
+.edit:hover,
+.edit-proj:hover {
     /* background-color: yellowgreen;
     border-radius: 5px; */
-    color: rgb(75, 52, 4);
+    color: rgb(75, 52, 4) !important;
 }
 
 
@@ -254,6 +270,7 @@ ul li.checkedli {
     box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
     /* display: none; */
 }
+
 
 /* .wrapper-created-proj {
     overflow-x: hidden;
@@ -657,20 +674,18 @@ hr {
 }
 
 @media (min-width: 1025px) and (max-width: 1280px) {
-  
-  .wrapper-created-proj-list {
-      max-width: 20%;
-  }  
-  .wrapper {
-      max-width: 65%;
-  }
-    
+    .wrapper-created-proj-list {
+        max-width: 20%;
+    }
+    .wrapper {
+        max-width: 65%;
+    }
 }
 
 @media (min-width: 1370px) and (max-width: 1605px) {
     .wrapper-created-proj-list {
         max-width: 21.8%;
-    }  
+    }
     /* .wrapper-created-proj {
         height: 400px;
     } */
