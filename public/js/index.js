@@ -56,16 +56,23 @@ $(document).ready(function() {
                   <div class="card-body">
                     <div class="edit-proj"><i class="fa fa-edit"></i></div>
                     <span class="close del del-proj"><i class="fa fa-close"></i></span>
-                    <h4 class="card-title">${proj_title}</h4>
+                    <h4 class="card-title" contentEditable="false">${proj_title}</h4>
                     <hr>
-                    <p class="card-text">${proj_desc}</p>
+                    <p class="card-text" contentEditable="false">${proj_desc}</p>
                   </div>
                 </div>
                 <span class="hideText proj-id">${pid}</span>
                 <div class="proj-detail">View >></div>
             </div>
           `);
-        })     
+        })
+
+        $('.edit-proj').click(function() {
+          $('.card-title').attr('contentEditable', true);
+          $('.card-text').attr('contentEditable', true);
+          $('.card-title, .card-text').focus();
+
+        })
         $('.proj-detail').click(function() {
           const get_proj_id = $(this).siblings('.proj-id').text();
           const get_proj_title = $(this).siblings('div').find('h4').text();
