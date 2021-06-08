@@ -91,9 +91,8 @@ $(document).ready(function () {
       })
 
       $('.proj-detail').click(function () {
-        const get_proj_id = $(this).siblings('.proj-id').text();
-        const get_proj_title = $(this).siblings('div').find('h4').text();
-        console.log(get_proj_id);
+        const get_proj_id = $(this).parent().siblings('.proj-id').text();
+        const get_proj_title = $(this).parent().siblings('div').find('h4').text();
         var proj_id = trim(get_proj_id);
         var proj_title = trim(get_proj_title);
         location.href = `details.html?projTitle=${proj_title}&projID=${proj_id}`;

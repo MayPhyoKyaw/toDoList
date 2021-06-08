@@ -10,9 +10,9 @@ $(document).ready(function() {
         history.pushState(location.href, null, replace_url)
     }
 
-    // window.open(replace_url, 'null', 
-    //     'directories=0,titlebar=0,toolbar=0,location=0,status=0,menubar=0,scrollbars=no,resizable=no, width=400,height=350'
-    // );
+    window.open(replace_url, 'null', 
+        'directories=0,titlebar=0,toolbar=0,location=0,status=0,menubar=0,scrollbars=no,resizable=no, width=400,height=350'
+    );
 
     document.getElementById("projTitle").textContent = project_title;
 
