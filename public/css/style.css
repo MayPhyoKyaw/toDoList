@@ -24,7 +24,7 @@ body {
 .card-body {
     text-align: left;
     padding-bottom: 0rem !important;
-    padding: 0.8rem !important;
+    padding: 1rem !important;
 }
 
 
@@ -134,19 +134,16 @@ ul li.checkedli {
     /* border-radius: 5px; */
 }
 
-.edit-proj,
 .del-proj {
     display: none !important;
     /* color: #000080 !important; */
 }
 
-.wrapper-created-proj-list:hover .edit-proj,
 .wrapper-created-proj-list:hover .del-proj {
     display: block !important;
 }
 
-.edit,
-.edit-proj {
+.edit {
     /* float: right; */
     right: 10px;
     top: 0;
@@ -159,10 +156,7 @@ ul li.checkedli {
     cursor: pointer;
 }
 
-.edit:hover,
-.edit-proj:hover {
-    /* background-color: yellowgreen;
-    border-radius: 5px; */
+.edit:hover {
     color: rgb(75, 52, 4) !important;
 }
 
@@ -307,7 +301,7 @@ div.wrapper-sticky {
     padding: 10px;
     border-radius: 10px;
     box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
+    /* cursor: pointer; */
     z-index: 2;
 }
 
@@ -318,13 +312,15 @@ div.wrapper-sticky {
     /* position: relative; */
 }
 
+.view-detail,
 .proj-detail {
     text-align: right;
-    padding-right: 25px;
+    padding-right: 15px;
+    color: #0079bf;
 }
 
-.proj-detail:hover {
-    color: #0079bf;
+.proj-detail {
+    cursor: pointer;
 }
 
 .proj-create {
