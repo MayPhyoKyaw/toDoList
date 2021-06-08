@@ -11,11 +11,7 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!--Get your own code at fontawesome.com-->
 </head>
 
@@ -63,9 +59,69 @@
         </div>
     </div>
 
+    <!-- The Project edit Modal -->
+    <div class="modal" id="confirmCardTitleEditModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Update Title Comfirmation</h4>
+                    <button type="button" class="modalClose" data-dismiss="modal"><span class="fa fa-close"></span></button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body card-modal-body">
+                    Are you sure you want to update the project name to  
+                    <span style="color: rgb(117, 207, 0);" id="updateTitle"></span>?
+                    <span class="hideText card-id"></span>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" id="editCardTitle" class="btn btn-info" data-dismiss="modal">Okay</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- The Project edit Modal -->
+    <div class="modal" id="confirmCardTextEditModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Update Content Comfirmation</h4>
+                    <button type="button" class="modalClose" data-dismiss="modal"><span class="fa fa-close"></span></button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body card-modal-body">
+                    Are you sure you want to update the project description to  
+                    <span style="color: rgb(117, 207, 0);" id="updateText"></span>?
+                    <span class="hideText card-id"></span>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" id="editCardText" class="btn btn-info" data-dismiss="modal">Okay</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
     <!-- Script -->
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <!-- <script src="js/toDoDetails.js"></script> -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="js/index.js"></script>
     <!-- <script type="text/javascript">
         

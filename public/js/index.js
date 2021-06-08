@@ -48,16 +48,15 @@ $(document).ready(function () {
         var proj_title = proj.projTitle;
         var proj_desc = proj.description;
         var pid = proj._id;
-        console.log(pid);
+        console.log(pid, proj_desc);
 
         $(".wrapper-created-proj").append(`
             <div class="wrapper-created-proj-list">
                 <div class="card">
                   <div class="card-body">
                     <span class="close del del-proj"><i class="fa fa-close"></i></span>
-                    <h4 class="card-title" contentEditable="true">${proj_title}</h4>
-                    <hr>
-                    <p class="card-text" contentEditable="true">${proj_desc}</p>
+                    <h4 class="card-title" contentEditable="true" id="cardTitle">${proj_title}</h4>
+                    <p class="card-text" contentEditable="true" id="cardText">${proj_desc}</p>
                   </div>
                 </div>
                 <span class="hideText proj-id">${pid}</span>
@@ -65,6 +64,123 @@ $(document).ready(function () {
             </div>
           `);
       })
+
+      var cardTitle = document.getElementById("cardTitle");
+      cardTitle.addEventListener('keydown', function(ev){
+          // console.log(ev.which);
+          if(ev.keyCode == 13){
+            ev.preventDefault();
+            var card_title = $(this).text();
+            var card_id = $(this).parent().parent().siblings(".proj-id").text();
+            // console.log(card_title); console.log(card_id);
+            $("#updateTitle").text(`"${card_title}"`);
+            $(".card-id").text(`${card_id}`);
+            $("#confirmCardTitleEditModal").modal('show');
+          }
+      }, false)
+
+      var cardText = document.getElementById("cardText");
+      cardText.addEventListener('keydown', function(ev){
+        // console.log(ev.which);
+        if(ev.keyCode == 13){
+          ev.preventDefault();
+          var card_text = $(this).text();
+          var card_id = $(this).parent().parent().siblings(".proj-id").text();
+          // console.log(card_text); console.log(card_id);
+          $("#updateText").text(`"${card_text}"`);
+          $(".card-id").text(`${card_id}`);
+          $("#confirmCardTextEditModal").modal('show');
+        }
+      }, false)
+
+      $("#editCardTitle").on('click', function(){
+        var card_id = $(this).parent().siblings().find(".card-id").text();
+        var card_title = $(this).parent().siblings().find("#updateTitle").text();
+        // console.log(card_id); console.log(card_title);
+        var title = card_title.replace(/"/g,"");
+        console.log(title);
+        fetch('/editCardTitle', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            p_id: card_id,
+            p_title: title,
+          })
+        })
+          .then(function (response) {
+            console.log(response)
+            if (response.ok) {
+              console.log('clicked!!');
+              return;
+            }
+            throw new Error('Failed!!');
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+          location.reload();
+      });
+
+      $("#editCardText").on('click', function(){
+        var card_id = $(this).parent().siblings().find(".card-id").text();
+        var card_text = $(this).parent().siblings().find("#updateText").text();
+        // console.log(card_id); console.log(card_text);
+        var content = card_text.replace(/"/g,"");
+        console.log(content);
+        fetch('/editCardText', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            p_id: card_id,
+            p_content: content,
+          })
+        })
+          .then(function (response) {
+            console.log(response)
+            if (response.ok) {
+              console.log('clicked!!');
+              return;
+            }
+            throw new Error('Failed!!');
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+          location.reload();
+      });
+
+      $(".del-proj").on('click', function(){
+        var card_id = $(this).parent().parent().siblings(".proj-id").text();
+        // console.log(card_id);
+        fetch('/DeleteProjCard', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+           p_id: card_id,
+          })
+        })
+          .then(function (response) {
+            console.log(response)
+            if (response.ok) {
+              console.log('clicked!!');
+              return;
+            }
+            throw new Error('Failed!!');
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+          location.reload();
+      });
 
       // $('.edit-proj').click(function() {
       //   $('.card-title').attr('contentEditable', true);

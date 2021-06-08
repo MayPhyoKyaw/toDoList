@@ -137,7 +137,7 @@ app.post('/MakeDoneStatus', (req, res) => {
     async function DoneRun() {
         try {
             await client.connect();
-            console.log("Connected correctly to server for editting make status....");
+            console.log("Connected correctly to server for editing make status....");
             const database = client.db(dbName);
             const collection = database.collection("listItems");
             console.log(req.body.itemID)
@@ -169,7 +169,7 @@ app.post('/MakeUndoStatus', (req, res) => {
     async function UndoRun() {
         try {
             await client.connect();
-            console.log("Connected correctly to server for editting make status....");
+            console.log("Connected correctly to server for editing make status....");
             const database = client.db(dbName);
             const collection = database.collection("listItems");
             console.log(req.body.item_id)
@@ -202,7 +202,7 @@ app.post('/editTask', (req, res) => {
     async function EditRun() {
         try {
             await client.connect();
-            console.log("Connected correctly to server for editting make status....");
+            console.log("Connected correctly to server for editing task....");
             const database = client.db(dbName);
             const collection = database.collection("listItems");
             console.log(req.body.itemId)
@@ -318,4 +318,101 @@ app.post('/DeleteCompletedTasks', (req, res) => {
         }
     }
     DeleteCtasksRun().catch(console.dir);
+});
+
+// edit task
+app.post('/editCardTitle', (req, res) => {
+    const url = 'mongodb+srv://ksp_ToDoList:ksp12345@cluster0.b0t7c.mongodb.net/myFirstDatabase?retryWrites=true&w=majority&useNewUrlParser=true&useUnifiedTopology=true';
+    const client = new MongoClient(url);
+    const dbName = "toDoList";
+
+    async function EditCardTitleRun() {
+        try {
+            await client.connect();
+            console.log("Connected correctly to server for editing project title....");
+            const database = client.db(dbName);
+            const collection = database.collection("project");
+            console.log(req.body.p_id)
+            // create a filter to update done status
+            const filter = {
+                _id: req.body.p_id,
+            };
+            // update a document
+            const updateDoc = {
+                $set: {projTitle: req.body.p_title},
+            };
+            // for update many
+            const result = await collection.updateOne(filter, updateDoc);
+            console.log(
+                `${result.matchedCount} document(s) matched the filter, updated ${result.modifiedCount} document(s)`,
+            );
+        } finally {
+            await client.close();
+        }
+    }
+    EditCardTitleRun().catch(console.dir);
+});
+
+// edit task
+app.post('/editCardText', (req, res) => {
+    const url = 'mongodb+srv://ksp_ToDoList:ksp12345@cluster0.b0t7c.mongodb.net/myFirstDatabase?retryWrites=true&w=majority&useNewUrlParser=true&useUnifiedTopology=true';
+    const client = new MongoClient(url);
+    const dbName = "toDoList"
+
+    async function EditCardTextRun() {
+        try {
+            await client.connect();
+            console.log("Connected correctly to server for editing project description....");
+            const database = client.db(dbName);
+            const collection = database.collection("project");
+            console.log(req.body.p_id)
+            // create a filter to update done status
+            const filter = {
+                _id: req.body.p_id,
+            };
+            // update a document
+            const updateDoc = {
+                $set: {description: req.body.p_content},
+            };
+            // for update many
+            const result = await collection.updateOne(filter, updateDoc);
+            console.log(
+                `${result.matchedCount} document(s) matched the filter, updated ${result.modifiedCount} document(s)`,
+            );
+        } finally {
+            await client.close();
+        }
+    }
+    EditCardTextRun().catch(console.dir);
+});
+
+app.post('/DeleteProjCard', (req, res) => {
+    console.log(req.body)
+    const url = 'mongodb+srv://ksp_ToDoList:ksp12345@cluster0.b0t7c.mongodb.net/myFirstDatabase?retryWrites=true&w=majority&useNewUrlParser=true&useUnifiedTopology=true';
+    const client = new MongoClient(url);
+    const dbName = "toDoList"
+
+    async function DeleteProjCardRun() {
+        try {
+            await client.connect();
+            console.log("Connected correctly to server for deleting....");
+            const database = client.db(dbName);
+            const collection = database.collection("project");
+            console.log(req.body.p_id)
+            // create a filter to delete
+            const filter = {
+                _id: req.body.p_id,
+            };
+            // for delete one
+            const result = await collection.deleteOne(filter);
+            if (result.deletedCount === 1) {
+                console.dir("Successfully deleted one document.");
+            } else {
+                console.log("No documents matched the query. Deleted 0 documents.");
+            }
+        } finally {
+            await client.close();
+        }
+    }
+    DeleteProjCardRun().catch(console.dir);
 });
