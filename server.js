@@ -212,7 +212,11 @@ app.post('/editTask', (req, res) => {
             };
             // update a document
             const updateDoc = {
-                $set: {itemName: req.body.item_name},
+                $set: {
+                    itemName: req.body.item_name,
+                    dueDate: req.body.due_date,
+                    taskPriority: req.body.priority,
+                },
             };
             // for update many
             const result = await collection.updateOne(filter, updateDoc);

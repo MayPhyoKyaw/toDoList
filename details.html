@@ -11,11 +11,8 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'> -->
     <!--Get your own code at fontawesome.com-->
 </head>
 
@@ -32,13 +29,25 @@
         <ul id="toDoList" class="todolist">
             <!-- data are comes from db -->
             <div class="pending_tasks">
-                <h5><span class="pendingTasks"></span> Pending Tasks</h5>
+                <h4><span class="pendingTasks"></span> Pending Tasks</h4>
+                <div class="tasks-header">
+                    <h5><i class="fa fa-star star-icon"></i> First Priority</h5>
+                    <h5 class="due-date-header">Due Date</h5>
+                </div>
+                <div class="first-priority-items"></div>
+                <hr>
+                <div class="tasks-header">
+                    <h5><i class="fa fa-info-circle info-icon"></i> Other Priorities</h5>
+                    <h5 class="due-date-header">Due Date</h5>
+                </div>
+                <div class="other-items"></div>
             </div>
             <hr>
             <div class="completed_tasks">
-                <div class="completed_tasts_header">
-                    <h5><span class="completedTasks"></span> Completed Tasks</h5>
+                <div class="tasks-header">
+                    <h4><span class="completedTasks"></span> Completed Tasks</h4>
                     <button data-toggle="modal" data-target="#confirmCompletedModal">Clear</button>
+                    <h4 class="due-date-header">Due Date</h4>
                 </div>
             </div>
         </ul>
@@ -113,7 +122,7 @@
                 <!-- Modal Header -->
                 <div class="modal-header edit-modal-color">
                     <h4 class="modal-title edit-modal-title">Change your task Here! </h4>
-                    <button type="button" class="edit-modalClose" data-dismiss="modal"><span class="fa fa-close"></span></button>
+                    <button type="button" class="edit-modalClose edit-remove-selected" data-dismiss="modal"><span class="fa fa-close"></span></button>
                 </div>
 
                 <!-- Modal body -->
@@ -133,15 +142,15 @@
                         <div class="col edit-modal-right">
                             <label>
                                     Due Date and Time For Your Task<br>
-                                    <input type="datetime-local">
+                                    <input type="datetime-local" id="dueDateTime" value="">
                                 </label>
                             <label>
                                     Select Priority For Your Task<br>
-                                    <select>
-                                        <option value="" disabled selected>Priority...</option>
-                                        <option>This is option 1</option>
-                                        <option>This is option 2</option>
-                                        <option>This is option 3</option>
+                                    <select id="makePriority">
+                                        <option value="" selected>Priority...</option>
+                                        <option value="First Priority">First Priority</option>
+                                        <option value="Second Priority">Second Priority</option>
+                                        <option value="Third Priority">Third Priority</option>
                                     </select>
                                 </label>
                         </div>
@@ -151,7 +160,7 @@
                 <!-- Modal footer -->
                 <div class="modal-footer edit-modal-color">
                     <span class="hideText hiddenID" id="carry_id"></span>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-secondary edit-remove-selected" data-dismiss="modal">Cancel</button>
                     <button type="button" class="btn btn-info editListItem" data-dismiss="modal">Update Now</button>
                 </div>
 
@@ -160,6 +169,13 @@
     </div>
 
     <!-- Script -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script> -->
+
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="js/toDoDetails.js"></script>
     <!-- <script src="js/index.js"></script> -->

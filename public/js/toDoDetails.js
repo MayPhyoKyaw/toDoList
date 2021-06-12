@@ -29,37 +29,127 @@ $(document).ready(function() {
             // var pendingTask = [];
            console.log(project_id);
             data.forEach(list => {
-                console.log(location.href)
+                // console.log(location.href)
                 // console.log(list);
                 var toDoItem = list.itemName;
                 var id = list._id;
                 var status = list.doneStatus;
                 var projID = list.pid;
+                var dueDate = list.dueDate;
+                var priority = list.taskPriority;
+                // console.log(typeof(dueDate))
                 // console.log(status);
                 // console.log(toDoItems);
                 if(projID === project_id) {
                   console.log(typeof(status));
                   toDoItems.push(status);
                   if(status == 1){
-                    $(".completed_tasks").append(`
-                      <li class="checkedli list">
-                          <input type="checkbox" name="toDoList" value="${id}" class="styled-checkbox" checked>
-                          <label></label><span class="item_name">${toDoItem} </span>
-                          <span class="hideText" id="itemId">${id}</span>
-                          <span class="edit passValue" data-toggle="modal" data-target="#editModal"><i class="fa fa-edit"></i></span>
-                          <span class="close del"><i class="fa fa-close"></i></span>
-                      </li>
-                    `);
+                    if(dueDate === undefined) {
+                      $(".completed_tasks").append(`
+                        <li class="checkedli list">
+                          <div class="row">
+                            <div class="col-9 completed-task-content">
+                              <input type="checkbox" name="toDoList" value="${id}" class="styled-checkbox" checked>
+                              <label></label><span class="item_name">${toDoItem} </span>
+                              <span class="hideText" id="itemId">${id}</span>
+                              <span class="hideText" id="dueDate">${dueDate}</span>
+                              <span class="hideText" id="priority">${priority}</span>
+                              <span class="edit passValue" data-toggle="modal" data-target="#editModal"><i class="fa fa-edit"></i></span>
+                              <span class="close del"><i class="fa fa-close"></i></span>
+                            </div>
+                            <div class="col-3 completed-due-date-content">
+                              -
+                            </div>
+                          </div>
+                        </li>
+                      `);
+                    }else{
+                      var date = dueDate.split("T");
+                      // console.log(date);
+                      $(".completed_tasks").append(`
+                        <li class="checkedli list">
+                          <div class="row">
+                            <div class="col-9 completed-task-content">
+                              <input type="checkbox" name="toDoList" value="${id}" class="styled-checkbox" checked>
+                              <label></label><span class="item_name">${toDoItem} </span>
+                              <span class="hideText" id="itemId">${id}</span>
+                              <span class="hideText" id="dueDate">${dueDate}</span>
+                              <span class="hideText" id="priority">${priority}</span>
+                              <span class="edit passValue" data-toggle="modal" data-target="#editModal"><i class="fa fa-edit"></i></span>
+                              <span class="close del"><i class="fa fa-close"></i></span>
+                            </div>
+                            <div class="col-3 completed-due-date-content">
+                              ${date[0]}  ${date[1]}
+                            </div>
+                          </div>
+                        </li>
+                      `);
+                    }
                   }else{
-                    $(".pending_tasks").append(`
-                      <li class="list">
-                          <input type="checkbox" name="toDoList" value="${id}" class="styled-checkbox">
-                          <label></label><span class="item_name">${toDoItem} </span>
-                          <span class="hideText" id="itemId">${id}</span>
-                          <span class="edit passValue" data-toggle="modal" data-target="#editModal"><i class="fa fa-edit"></i></span>
-                          <span class="close del"><i class="fa fa-close"></i></span>
-                      </li>
-                    `);
+                    if(priority === "First Priority" && dueDate !== undefined){
+                        var date = dueDate.split("T");
+                        console.log(typeof(date), date);
+                        $(".first-priority-items").append(`
+                          <li class="list">
+                            <div class="row">
+                              <div class="col-9 task-content">
+                                <input type="checkbox" name="toDoList" value="${id}" class="styled-checkbox">
+                                <label></label><span class="item_name">${toDoItem} </span>
+                                <span class="hideText" id="itemId">${id}</span>
+                                <span class="hideText" id="dueDate">${dueDate}</span>
+                                <span class="hideText" id="priority">${priority}</span>
+                                <span class="edit passValue" data-toggle="modal" data-target="#editModal"><i class="fa fa-edit"></i></span>
+                                <span class="close del"><i class="fa fa-close"></i></span>
+                              </div>
+                              <div class="col-3 due-date-content">
+                                ${date[0]}  ${date[1]}
+                              </div>
+                            </div>
+                          </li>
+                        `);
+                    }else {
+                      if(dueDate === undefined) {
+                        $(".other-items").append(`
+                          <li class="list">
+                            <div class="row">
+                              <div class="col-9 task-content">
+                                <input type="checkbox" name="toDoList" value="${id}" class="styled-checkbox">
+                                <label></label><span class="item_name">${toDoItem} </span>
+                                <span class="hideText" id="itemId">${id}</span>
+                                <span class="hideText" id="dueDate">${dueDate}</span>
+                                <span class="hideText" id="priority">${priority}</span>
+                                <span class="edit passValue" data-toggle="modal" data-target="#editModal"><i class="fa fa-edit"></i></span>
+                                <span class="close del"><i class="fa fa-close"></i></span>
+                              </div>
+                              <div class="col-3 due-date-content">
+                                -
+                              </div>
+                            </div>
+                          </li>
+                        `);
+                      }else {
+                        var date = dueDate.split("T");
+                        console.log(typeof(date), date);
+                        $(".other-items").append(`
+                          <li class="list">
+                            <div class="row">
+                              <div class="col-9 task-content">
+                                <input type="checkbox" name="toDoList" value="${id}" class="styled-checkbox">
+                                <label></label><span class="item_name">${toDoItem} </span>
+                                <span class="hideText" id="itemId">${id}</span>
+                                <span class="hideText" id="dueDate">${dueDate}</span>
+                                <span class="hideText" id="priority">${priority}</span>
+                                <span class="edit passValue" data-toggle="modal" data-target="#editModal"><i class="fa fa-edit"></i></span>
+                                <span class="close del"><i class="fa fa-close"></i></span>
+                              </div>
+                              <div class="col-3 due-date-content">
+                                ${date[0]}  ${date[1]}
+                              </div>
+                            </div>
+                          </li>
+                        `);
+                      }
+                    }
                   }
                 }                    
   
@@ -147,17 +237,29 @@ $(document).ready(function() {
   
                 $(".passValue").click(function(){
                   var item_id = $(this).siblings("#itemId").text();
-                  console.log(`Hello ${item_id}`);
+                  // console.log(`Hello ${item_id}`);
                   var itemName = $(this).siblings(".item_name").text();
-                  console.log(itemName);
+                  // console.log(itemName);
+                  var dueDate = $(this).siblings("#dueDate").text();
+                  // console.log(dueDate);
                   // $("#editToDo").val(itemName);
+                  var priority = $(this).siblings("#priority").text();
+                  // $("#makePriority").val(priority);
+                  $(`#makePriority option[value="${priority}"]`).attr('selected', 'selected');
                   document.getElementById("editToDo").textContent = itemName;
                   document.getElementById("carry_id").textContent = item_id;
+                  document.getElementById("dueDateTime").value = dueDate;
+                })
+
+                $(".edit-remove-selected").click(function(){
+                  $(`#makePriority option[value="${priority}"]`).removeAttr('selected', 'selected');
                 })
   
                 $(".editListItem").click(function(){
                   var itemId = $(this).siblings(".hiddenID").text();
                   var editedItemName = document.getElementById("editToDo").value;
+                  var dueDate = document.getElementById("dueDateTime").value;
+                  var priority = document.getElementById("priority").value;
                   console.log(`Hello ${itemId}`);
                   fetch('/editTask', {
                     method: 'POST',
@@ -168,6 +270,8 @@ $(document).ready(function() {
                     body: JSON.stringify({
                       itemId: itemId,
                       item_name: editedItemName,
+                      due_date: dueDate,
+                      priority: priority,
                     })
                   })
                     .then(function (response) {
