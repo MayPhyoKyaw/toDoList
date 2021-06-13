@@ -24,12 +24,14 @@ body {
 .card-title{
     padding-bottom: 12px;
     border-bottom: 1px dashed rgb(194, 192, 192);
+    font-family: cursive;
 }
 
 .card-body {
     text-align: left;
     padding-bottom: 0rem !important;
     padding: 1rem !important;
+    font-family: cursive;
 }
 
 /* modal */
@@ -104,6 +106,8 @@ ul li {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    font-family: cursive;
+    font-size: medium;
 }
 
 
@@ -115,6 +119,8 @@ ul li:nth-child(odd) {
     background: rgba(255, 248, 213, 0.521);
     border-top: 1px solid rgb(208, 209, 211);
     border-bottom: 1px solid rgb(208, 209, 211);
+    font-family: cursive;
+    font-size: medium;
 }
 
 
@@ -132,6 +138,8 @@ ul li.checkedli {
     background: rgba(104, 100, 122, 0.651);
     color: #fff;
     /* text-decoration: line-through; */
+    font-family: cursive;
+    font-size: medium;
 }
 
 
@@ -359,6 +367,7 @@ div.wrapper-sticky {
     text-align: right;
     padding-right: 15px;
     color: #0079bf;
+    font-family: cursive;
 }
 
 .proj-detail {
@@ -371,7 +380,8 @@ div.wrapper-sticky {
 }
 
 .proj-create-button {
-    font-family: 'Roboto', sans-serif;
+    /* font-family: 'Roboto', sans-serif; */
+    font-family: cursive;
     opacity: 0.6;
     outline: none;
 }
@@ -417,7 +427,8 @@ div.wrapper-sticky {
     color: #fff;
     margin-left: 5px;
     font-size: 21px;
-    font-family: 'Roboto', sans-serif;
+    /* font-family: 'Roboto', sans-serif; */
+    font-family: cursive;
     outline: none;
     background: #003380;
     cursor: pointer !important;
@@ -615,7 +626,8 @@ div.wrapper-sticky {
     color: #fff;
     font-weight: 400;
     font-size: 16px;
-    font-family: 'Roboto', sans-serif;
+    /* font-family: 'Roboto', sans-serif; */
+    font-family: cursive;
     margin-left: 5px;
     margin-top: 10px;
     background: #a80000;
@@ -667,7 +679,8 @@ div.wrapper-sticky {
     color: #fff;
     font-weight: 400;
     font-size: 16px;
-    font-family: 'Roboto', sans-serif;
+    /* font-family: 'Roboto', sans-serif; */
+    font-family: cursive;
     margin-left: 5px;
     margin-top: -15px;
     background: #b60000;
@@ -709,7 +722,16 @@ hr {
 
 .info-icon {
     font-size:24px;
-    color: rgb(0, 255, 234);
+    color: rgb(255, 0, 64);
+}
+
+.task-icon {
+    font-size:20px;
+    color: rgb(0, 255, 21);
+}
+
+.show-priority {
+    padding-left: 25%;
 }
 
 /* input date style */
@@ -763,7 +785,7 @@ hr {
         max-width: 20%;
     }
     .wrapper {
-        max-width: 75%;
+        max-width: 70%;
         background-repeat: no-repeat;
         background-size: cover;
         padding-bottom: 50px;
