@@ -216,143 +216,143 @@ $(document).ready(function() {
                     }
                   }
                 }                    
-  
-                $("input[type=checkbox]").on("click", function(e) {
-                  var item_id = `${(this).value}`;
-                  console.log(item_id);
-                  if($(this).is(":checked")) {
-                    console.log(`Checkbox is checked. \n ${(this).value}`);
-                    fetch('/MakeDoneStatus', {
-                      method: 'POST',
-                      headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                      },
-                      body: JSON.stringify({
-                        itemID: item_id,
-                      })
-                    })
-                      .then(function (response) {
-                        console.log(response)
-                        if (response.ok) {
-                          console.log('clicked!!');
-                          return;
-                        }
-                        throw new Error('Failed!!');
-                      })
-                      .catch(function (error) {
-                        console.log(error);
-                      });
-                  }else if($(this).is(":not(:checked)")){
-                    console.log("Checkbox is unchecked.");
-                    fetch('/MakeUndoStatus', {
-                      method: 'POST',
-                      headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                      },
-                      body: JSON.stringify({
-                        item_id: item_id,
-                      })
-                    })
-                      .then(function (response) {
-                        console.log(response)
-                        if (response.ok) {
-                          console.log('clicked!!');
-                          return;
-                        }
-                        throw new Error('Failed!!');
-                      })
-                      .catch(function (error) {
-                        console.log(error);
-                      });
-                  }
-                  location.href = `details.html?projTitle=${project_title}&projID=${project_id}`;
-                  // location.reload();
-                });
-  
-                $(".del").click(function(){
-                  var item_id = $(this).siblings("#itemId").text();
-                  console.log(`Hello ${item_id}`);
-                  fetch('/DeleteItem', {
-                    method: 'POST',
-                    headers: {
-                      'Accept': 'application/json',
-                      'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                      item_id: item_id,
-                    })
-                  })
-                    .then(function (response) {
-                      console.log(response)
-                      if (response.ok) {
-                        console.log('clicked!!');
-                        return;
-                      }
-                      throw new Error('Failed!!');
-                    })
-                    .catch(function (error) {
-                      console.log(error);
-                    });
-                    location.href = `details.html?projTitle=${project_title}&projID=${project_id}`;
-                    // location.reload();
-                })
-  
-                $(".passValue").click(function(){
-                  var item_id = $(this).siblings("#itemId").text();
-                  // console.log(`Hello ${item_id}`);
-                  var itemName = $(this).siblings(".item_name").text();
-                  // console.log(itemName);
-                  var dueDate = $(this).siblings("#dueDate").text();
-                  // console.log(dueDate);
-                  // $("#editToDo").val(itemName);
-                  var priority = $(this).siblings("#priority").text();
-                  // $("#makePriority").val(priority);
-                  $(`#makePriority option[value="${priority}"]`).attr('selected', 'selected');
-                  document.getElementById("editToDo").textContent = itemName;
-                  document.getElementById("carry_id").textContent = item_id;
-                  document.getElementById("dueDateTime").value = dueDate;
-                })
-
-                $(".edit-remove-selected").click(function(){
-                  $(`#makePriority option[value="${priority}"]`).removeAttr('selected', 'selected');
-                })
-  
-                $(".editListItem").click(function(){
-                  var itemId = $(this).siblings(".hiddenID").text();
-                  var editedItemName = document.getElementById("editToDo").value;
-                  var dueDate = document.getElementById("dueDateTime").value;
-                  var priority = document.getElementById("makePriority").value;
-                  console.log(`Hello ${itemId}`);
-                  fetch('/editTask', {
-                    method: 'POST',
-                    headers: {
-                      'Accept': 'application/json',
-                      'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                      itemId: itemId,
-                      item_name: editedItemName,
-                      due_date: dueDate,
-                      priority: priority,
-                    })
-                  })
-                    .then(function (response) {
-                      console.log(response)
-                      if (response.ok) {
-                        console.log('clicked!!');
-                        return;
-                      }
-                      throw new Error('Failed!!');
-                    })
-                    .catch(function (error) {
-                      console.log(error);
-                    });
-                    location.href = `details.html?projTitle=${project_title}&projID=${project_id}`;
-                    // location.reload();
-                })
             });
+
+            $("input[type=checkbox]").on("click", function(e) {
+              var item_id = `${(this).value}`;
+              console.log(item_id);
+              if($(this).is(":checked")) {
+                console.log(`Checkbox is checked. \n ${(this).value}`);
+                fetch('/MakeDoneStatus', {
+                  method: 'POST',
+                  headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify({
+                    itemID: item_id,
+                  })
+                })
+                  .then(function (response) {
+                    console.log(response)
+                    if (response.ok) {
+                      console.log('clicked!!');
+                      return;
+                    }
+                    throw new Error('Failed!!');
+                  })
+                  .catch(function (error) {
+                    console.log(error);
+                  });
+              }else if($(this).is(":not(:checked)")){
+                console.log("Checkbox is unchecked.");
+                fetch('/MakeUndoStatus', {
+                  method: 'POST',
+                  headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify({
+                    item_id: item_id,
+                  })
+                })
+                  .then(function (response) {
+                    console.log(response)
+                    if (response.ok) {
+                      console.log('clicked!!');
+                      return;
+                    }
+                    throw new Error('Failed!!');
+                  })
+                  .catch(function (error) {
+                    console.log(error);
+                  });
+              }
+              location.href = `details.html?projTitle=${project_title}&projID=${project_id}`;
+              // location.reload();
+            });
+
+            $(".del").click(function(){
+              var item_id = $(this).siblings("#itemId").text();
+              console.log(`Hello ${item_id}`);
+              fetch('/DeleteItem', {
+                method: 'POST',
+                headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                  item_id: item_id,
+                })
+              })
+                .then(function (response) {
+                  console.log(response)
+                  if (response.ok) {
+                    console.log('clicked!!');
+                    return;
+                  }
+                  throw new Error('Failed!!');
+                })
+                .catch(function (error) {
+                  console.log(error);
+                });
+                location.href = `details.html?projTitle=${project_title}&projID=${project_id}`;
+                // location.reload();
+            })
+
+            $(".passValue").click(function(){
+              var item_id = $(this).siblings("#itemId").text();
+              // console.log(`Hello ${item_id}`);
+              var itemName = $(this).siblings(".item_name").text();
+              // console.log(itemName);
+              var dueDate = $(this).siblings("#dueDate").text();
+              // console.log(dueDate);
+              // $("#editToDo").val(itemName);
+              var priority = $(this).siblings("#priority").text();
+              // $("#makePriority").val(priority);
+              $(`#makePriority option[value="${priority}"]`).attr('selected', 'selected');
+              document.getElementById("editToDo").textContent = itemName;
+              document.getElementById("carry_id").textContent = item_id;
+              document.getElementById("dueDateTime").value = dueDate;
+            })
+
+            $(".edit-remove-selected").click(function(){
+              $(`#makePriority option[value="${priority}"]`).removeAttr('selected', 'selected');
+            })
+
+            $(".editListItem").click(function(){
+              var itemId = $(this).siblings(".hiddenID").text();
+              var editedItemName = document.getElementById("editToDo").value;
+              var dueDate = document.getElementById("dueDateTime").value;
+              var priority = document.getElementById("makePriority").value;
+              console.log(`Hello ${itemId}`);
+              fetch('/editTask', {
+                method: 'POST',
+                headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                  itemId: itemId,
+                  item_name: editedItemName,
+                  due_date: dueDate,
+                  priority: priority,
+                })
+              })
+                .then(function (response) {
+                  console.log(response)
+                  if (response.ok) {
+                    console.log('clicked!!');
+                    return;
+                  }
+                  throw new Error('Failed!!');
+                })
+                .catch(function (error) {
+                  console.log(error);
+                });
+                location.href = `details.html?projTitle=${project_title}&projID=${project_id}`;
+                // location.reload();
+            })
             // console.log(toDoItems.length);
             var pending_count = 0;
             var completed_count = 0;
