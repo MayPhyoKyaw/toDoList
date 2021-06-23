@@ -135,8 +135,8 @@ ul li:hover {
 
 ul li.checkedli {
     background-image: url("../images/ToDo_List.png");
-    background: rgba(104, 100, 122, 0.651);
-    color: #fff;
+    background: rgba(206, 205, 197, 0.521);
+    color: rgb(155, 155, 155);
     /* text-decoration: line-through; */
     font-family: cursive;
     font-size: medium;
@@ -149,8 +149,12 @@ ul li.checkedli {
     border-left: 5px solid rgb(255, 153, 0);
 }
 
-.other-priority {
+.second-priority {
     border-left: 3px solid rgb(255, 187, 85);
+}
+
+.third-priority {
+    border-left: 2px solid rgb(255, 212, 147);
 }
 
 .close {
@@ -677,7 +681,8 @@ div.wrapper-sticky {
 }
 
 .completed-due-date-content {
-    background-color: rgba(128, 125, 143, 0.445);
+    background-color: rgba(209, 206, 223, 0.445);
+    padding: 5px 5px;
 }
 
 .tasks-header button {

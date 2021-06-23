@@ -149,11 +149,11 @@ $(document).ready(function() {
                           </li>
                         `);
                       }
-                    }else {
+                    }else if(priority === "Second Priority"){
                       if(dueDate === undefined) {
                         console.log(dueDate)
                         $(".other-items").append(`
-                          <li class="list other-priority" id="list">
+                          <li class="list second-priority" id="list">
                             <div class="row">
                               <div class="col-8 task-content">
                                 <input type="checkbox" name="toDoList" value="${id}" class="styled-checkbox">
@@ -175,7 +175,7 @@ $(document).ready(function() {
                         console.log(typeof(date), date);
                         if(date[0] === ""){
                           $(".other-items").append(`
-                          <li class="list other-priority">
+                          <li class="list second-priority">
                             <div class="row">
                               <div class="col-8 task-content">
                                 <input type="checkbox" name="toDoList" value="${id}" class="styled-checkbox">
@@ -194,7 +194,71 @@ $(document).ready(function() {
                         `);
                         }else {
                           $(".other-items").append(`
-                          <li class="list other-priority">
+                          <li class="list second-priority">
+                            <div class="row">
+                              <div class="col-8 task-content">
+                                <input type="checkbox" name="toDoList" value="${id}" class="styled-checkbox">
+                                <label></label><span class="item_name">${toDoItem} </span>
+                                <span class="hideText" id="itemId">${id}</span>
+                                <span class="hideText" id="dueDate">${dueDate}</span>
+                                <span class="hideText" id="priority">${priority}</span>
+                                <span class="edit passValue" data-toggle="modal" data-target="#editModal"><i class="fa fa-edit"></i></span>
+                                <span class="close del"><i class="fa fa-close"></i></span>
+                              </div>
+                              <div class="col-4 due-date-content">
+                                <img src="../images/events.png" height="20" width="20" /> ${date[0]}  ${date[1]}
+                              </div>
+                            </div>
+                          </li>
+                        `);
+                        }
+                      }
+                    }else if(priority === "Third Priority"){
+                      if(dueDate === undefined) {
+                        console.log(dueDate)
+                        $(".other-items").append(`
+                          <li class="list third-priority" id="list">
+                            <div class="row">
+                              <div class="col-8 task-content">
+                                <input type="checkbox" name="toDoList" value="${id}" class="styled-checkbox">
+                                <label></label><span class="item_name">${toDoItem} </span>
+                                <span class="hideText" id="itemId">${id}</span>
+                                <span class="hideText" id="dueDate">${dueDate}</span>
+                                <span class="hideText" id="priority">${priority}</span>
+                                <span class="edit passValue" data-toggle="modal" data-target="#editModal"><i class="fa fa-edit"></i></span>
+                                <span class="close del"><i class="fa fa-close"></i></span>
+                              </div>
+                              <div class="col-4 due-date-content">
+                                -
+                              </div>
+                            </div>
+                          </li>
+                        `);
+                      }else {
+                        var date = dueDate.split("T");
+                        console.log(typeof(date), date);
+                        if(date[0] === ""){
+                          $(".other-items").append(`
+                          <li class="list third-priority">
+                            <div class="row">
+                              <div class="col-8 task-content">
+                                <input type="checkbox" name="toDoList" value="${id}" class="styled-checkbox">
+                                <label></label><span class="item_name">${toDoItem} </span>
+                                <span class="hideText" id="itemId">${id}</span>
+                                <span class="hideText" id="dueDate">${dueDate}</span>
+                                <span class="hideText" id="priority">${priority}</span>
+                                <span class="edit passValue" data-toggle="modal" data-target="#editModal"><i class="fa fa-edit"></i></span>
+                                <span class="close del"><i class="fa fa-close"></i></span>
+                              </div>
+                              <div class="col-4 due-date-content">
+                                -
+                              </div>
+                            </div>
+                          </li>
+                        `);
+                        }else {
+                          $(".other-items").append(`
+                          <li class="list third-priority">
                             <div class="row">
                               <div class="col-8 task-content">
                                 <input type="checkbox" name="toDoList" value="${id}" class="styled-checkbox">
