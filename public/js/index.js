@@ -3,6 +3,7 @@ $(document).ready(function () {
   $(".proj-create-button").click(function () {
     var proj_title = document.getElementById("projTitle").value;
     var proj_desc = document.getElementById("description").value;
+    var proj_deadline = document.getElementById("projDeadline").value;
     // $(".proj-title").text(proj_title);
     // $(".proj-descp").text(proj_desc);
     if (proj_title === '' && proj_desc === '') {
@@ -18,6 +19,7 @@ $(document).ready(function () {
           projTitle: proj_title,
           projDesc: proj_desc,
           // add_time: addTime,
+          projDeadline: proj_deadline,
         })
       })
         .then(function (response) {

@@ -516,7 +516,8 @@ div.wrapper-sticky {
 .input-style input[type=text],
 .input-style input[type=datetime-local],
 .input-style select,
-.input-style textarea {
+.input-style textarea,
+.input-style input[type=date] {
     border: 1px solid #ccc;
     box-shadow: inset 0 1px 3px #ddd;
     border-radius: 2px;
@@ -681,7 +682,7 @@ div.wrapper-sticky {
 }
 
 .completed-due-date-content {
-    background-color: rgba(209, 206, 223, 0.445);
+    background-color: rgba(197, 204, 206, 0.342);;
     padding: 5px 5px;
 }
 

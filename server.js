@@ -83,6 +83,7 @@ app.post('/createProject', (req, res) => {
                 _id: (new ObjectId).toString(),
                 projTitle: req.body.projTitle,
                 description: req.body.projDesc,
+                projDeadline: req.body.projDeadline,
             };
             // Insert a single document, wait for promise so we can read it back
             const p = await doc.insertOne(newDocument);
